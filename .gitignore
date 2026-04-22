@@ -1,0 +1,55 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.gz
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.bcf
+*.run.xml
+*.pdfsync
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.lof
+*.lol
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.spl
+*.dvi
+*.ps
+Specification.pdf
+
+# TeXworks temp files
+*~
+# Mac OS X
+.DS_Store
+
+# Editor swap files
+*.swp
+*.swo
+
+# VS Code settings folder
+.vscode/
+
+# Temporary folders
+*_minted*
+/auto/
+latex.out/
+output/
