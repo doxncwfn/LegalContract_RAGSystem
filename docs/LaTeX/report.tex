@@ -26,6 +26,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 % \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{minted}
 
 \definecolor{keywordcolor}{rgb}{0.13,0.13,1} % Blue keywords
 \definecolor{stringcolor}{rgb}{0.7,0.13,0.13} % Dark red strings
@@ -205,7 +206,7 @@
 \coverpage\clearpage
 
 \tableofcontents\clearpage
-% \listoffigures\listoftables\clearpage
+% \listoffigures\lstlistoflistings\clearpage
 \setcounter{page}{1}
 \fancyfoot[L]{\scriptsize \ttfamily Natural Language Processing Assignment\\2$^{\texttt{nd}}$ Semester -- Academic year 2025-2026}
 \fancyfoot[R]{\scriptsize \ttfamily Page {\thepage}/\pageref{LastPage}}
@@ -215,8 +216,9 @@
 \part{Processing and Syntax Analysis}
 \section{Dataset Overview}
 \subsection*{Dataset Selection \& Justification}
-For this project, the primary data source is the \href{https://www.kaggle.com/datasets/konradb/atticus-open-contract-dataset-aok-beta}{\textbf{Atticus Open Contract Dataset (CUAD)}}. CUAD is a specialized, expert-annotated corpus containing 510 commercial legal contracts. It was created specifically to benchmark Natural Language Processing (NLP) models in the legal domain and provides a highly authoritative collection of unstructured contract text.\\
+For this project, the primary data source is the \href{https://www.kaggle.com/datasets/konradb/atticus-open-contract-dataset-aok-beta}{\textbf{Atticus Open Contract Dataset (CUAD)}}. CUAD is a specialized, expert-annotated corpus containing 510 commercial legal contracts. It was created specifically to benchmark Natural Language Processing (NLP) models in the legal domain and provides a highly authoritative collection of unstructured contract text.
 
+\medskip
 While the corpus encompasses over 500 contracts, a full-scale analysis was not necessary for demonstrating the effectiveness of the proposed pipeline. Many of the documents -- such as boilerplate Non-Disclosure Agreements -- are highly repetitive in structure and lack the complex linguistic content best suited for rigorous evaluation of clause segmentation and extraction algorithms.
 
 \subsection*{Alignment with Assignment Objectives}
@@ -245,7 +247,9 @@ This deliberately engineered subset, spanning a spectrum of commercial contract 
 \section{Clause Splitting}
 \label{task_1.1}
 \subsection{Objective and Problem Understanding}
-Legal contracts typically consist of long, complex sentences that include multiple clauses connected through conjunctions, conditions, and enumerations. These structures make downstream Natural Language Processing (NLP) tasks -- such as entity recognition or semantic role labeling -- significantly more difficult. Therefore, the goal of this task is to transform raw contract text into a sequence of semantically independent clauses, where each clause represents a meaningful and analyzable unit.\\
+Legal contracts typically consist of long, complex sentences that include multiple clauses connected through conjunctions, conditions, and enumerations. These structures make downstream Natural Language Processing (NLP) tasks -- such as entity recognition or semantic role labeling -- significantly more difficult. Therefore, the goal of this task is to transform raw contract text into a sequence of semantically independent clauses, where each clause represents a meaningful and analyzable unit.
+
+\medskip
 
 To achieve this, the implementation focuses on designing a hybrid rule-based and dependency-aware clause segmentation algorithm that leverages both surface-level punctuation and syntactic structure.
 
@@ -274,7 +278,7 @@ def clean_legal_text(text):
 \end{lstlisting}
 
 The preprocessing function applies several key transformations:
-\begin{itemize}
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
   \item \textbf{Removal of redaction markers:} Textual placeholders such as \verb|[***]|, which indicate redacted or confidential content, are stripped from the document to prevent confusion with actual clause content.
   \item \textbf{Elimination of page numbering:} Regular expressions are used to identify and remove page headers or footers (e.g., ``Page 1'') that appear throughout scanned or OCR-processed contracts.
   \item \textbf{Whitespace normalization:} Multiple consecutive newline (\verb|\\n|) and space characters are replaced with a single space, ensuring that sentence and clause boundaries are not obscured by formatting noise.
@@ -372,11 +376,15 @@ At the core of the system is the \verb|extract_clauses()| function, responsible 
 \end{algorithm}
 
 \subsubsection*{Token Whitespace Preservation}
-A critical challenge in NLP text segmentation is the \textbf{Tokenization Trap}. When parsers like \textcolor{red}{\textcolor{red}{\textcolor{red}{spaCy}}} process text, they split punctuation marks, symbols, and words into discrete tokens. Naively reconstructing a clause by joining these tokens with spaces ruins the original formatting, yielding artifacts such as \verb|( i )| instead of \verb|(i)| or ``V / MC Systems'' instead of ``V/MC Systems''.\\
+A critical challenge in NLP text segmentation is the \textbf{Tokenization Trap}. When parsers like \textcolor{red}{\textcolor{red}{\textcolor{red}{spaCy}}} process text, they split punctuation marks, symbols, and words into discrete tokens. Naively reconstructing a clause by joining these tokens with spaces ruins the original formatting, yielding artifacts such as \verb|( i )| instead of \verb|(i)| or ``V / MC Systems'' instead of ``V/MC Systems''.
+
+\medskip
 
 In the legal domain, preserving exact formatting is paramount. To resolve this, the algorithm abandons token-level string joining. Instead, it maintains index pointers (\verb|start_idx| and \verb|end_idx|) and slices the original document span (\verb|doc[start_idx:end_idx].text|). Because \textcolor{red}{\textcolor{red}{\textcolor{red}{spaCy}}} spans retain the exact character offsets of the raw input, this slicing technique guarantees 100\% fidelity to the original contract formatting, eliminating artificial whitespace while ensuring clean data for downstream tasks.
 \subsubsection*{Handling Legal Enumerations}
-Standard sentence boundary detection models are trained on general English, where periods indicate the end of a thought. However, legal contracts frequently utilize complex enumerations, where massive lists of conditions or obligations are chained together using semicolons (;). A standard tokenizer will fail on these structures, grouping multiple distinct conditions into a single, unmanageable paragraph.\\
+Standard sentence boundary detection models are trained on general English, where periods indicate the end of a thought. However, legal contracts frequently utilize complex enumerations, where massive lists of conditions or obligations are chained together using semicolons (;). A standard tokenizer will fail on these structures, grouping multiple distinct conditions into a single, unmanageable paragraph.
+
+\medskip
 
 To address this, the algorithm explicitly defines the semicolon as a hard clause boundary. This isolates each condition into its own independent string.
 
@@ -395,7 +403,9 @@ To address this, the algorithm explicitly defines the semicolon as a hard clause
 By splitting explicitly at semicolons, the algorithm preserves the semantic independence of each list item. This is critical for Task 2.3 (Intent Classification), as it allows the classifier to evaluate each condition individually rather than attempting to classify a convoluted block of text.
 
 \subsubsection*{Syntactic Dependency Rules}
-For complex sentences where punctuation is insufficient or ambiguous (such as clauses connected by ``and'', ``or'', or ``but''), the algorithm leverages dependency parsing to determine if a split is syntactically valid. Simply splitting at every coordinating conjunction (\verb|cc|) results in severe over-splitting, destroying compound adjectives or compound predicates (e.g., splitting ``Approval will not be withheld or delayed'' into two meaningless fragments).\\
+For complex sentences where punctuation is insufficient or ambiguous (such as clauses connected by ``and'', ``or'', or ``but''), the algorithm leverages dependency parsing to determine if a split is syntactically valid. Simply splitting at every coordinating conjunction (\verb|cc|) results in severe over-splitting, destroying compound adjectives or compound predicates (e.g., splitting ``Approval will not be withheld or delayed'' into two meaningless fragments).
+
+\medskip
 
 To prevent this, a strict \textbf{``New Subject'' Heuristic} was implemented. The algorithm will only split a sentence at a conjunction if \emph{all} of the following syntactic conditions are met:
 
@@ -482,9 +492,13 @@ The effectiveness of the Dependency-Aware Clause Splitter is evaluated by compar
   \label{clause_input}
 \end{figure}
 
-\result{Figure~\ref{clause_input}} presents a raw, unsegmented snapshot of Section~10.3 from the Sponsorship Agreement as it appears post-OCR processing. This image serves as a \textit{high-difficulty baseline}, reflecting the dense, non-linear structure typical of commercial legal filings.\\
+\result{Figure~\ref{clause_input}} presents a raw, unsegmented snapshot of Section~10.3 from the Sponsorship Agreement as it appears post-OCR processing. This image serves as a \textit{high-difficulty baseline}, reflecting the dense, non-linear structure typical of commercial legal filings.
 
-The section is anchored by a ``governing clause'' that transitions directly into a complex enumeration of ten distinct termination triggers, each separated by semicolons and frequently containing nested conditions -- notably the ``provided however'' block in item~(a). This input exemplifies the so-called ``Tokenization Trap'': conventional sentence splitters typically fail, either merging all ten items into a single run-on clause or fragmenting the logic of subordinate phrases (such as conditions within enumerated items).\\
+\medskip
+
+The section is anchored by a ``governing clause'' that transitions directly into a complex enumeration of ten distinct termination triggers, each separated by semicolons and frequently containing nested conditions -- notably the ``provided however'' block in item~(a). This input exemplifies the so-called ``Tokenization Trap'': conventional sentence splitters typically fail, either merging all ten items into a single run-on clause or fragmenting the logic of subordinate phrases (such as conditions within enumerated items).
+
+\medskip
 
 By adopting this particular passage as the starting point, the evaluation below underscores the limitations of off-the-shelf sentence segmentation and illustrates the necessity of the proposed hybrid, dependency-aware heuristic to preserve both syntactic boundaries and conditional logic.
 
@@ -521,6 +535,7 @@ The most rigorous test of the New Subject Heuristic (Rule 3) appears in clause~(
 Through these results, the system demonstrates that it can navigate the dense formatting of the Atticus Open Contract Dataset while preserving 100\% fidelity to the original text via span slicing.
 
 \section{Noun Phrase Chunking}
+\label{task_1.2}
 Following the isolation of semantically independent clauses in Task~1.1 (\result{Section~\ref{task_1.1}}), the next critical phase in the NLP extraction pipeline is \textbf{Noun Phrase (NP) Chunking}. The primary objective of this task is to identify and extract non-recursive noun phrases from the segmented text, representing their boundaries using the standard \textbf{Inside-Outside-Beginning (IOB)} tagging schema.
 
 \subsection{The Linguistic Challenge in Legal Text}
@@ -535,32 +550,8 @@ Noun Phrase Chunking is not merely a formatting exercise; it is a foundational p
   \item \textbf{Contextualizing Obligations (Task 2.3: Intent Classification):} While Clause Splitting (Task 1.1) isolates what the contractual rule is (the predicate), Noun Phrase Chunking isolates the \textit{actors} and \textit{objects} involved. It identifies who is obligated (e.g., ``SERVICERS'') and what specific object or payment is being acted upon (e.g., ``Net Program Participation Fees'').
 \end{itemize}
 By accurately mapping these phrases into the \texttt{Token~\textbackslash t~Tag} tabular format required by the problem specification, the pipeline effectively transforms unstructured linguistic text into discrete, machine-readable objects, ready for entity classification and downstream retrieval.
-
 \subsection{Methodology: The IOB Tagging Schema}
-The objective of this module is to identify key entities—such as contracting parties, financial amounts, and legal deadlines—by labeling noun phrases (NPs) within extracted clauses. To structure the extracted clauses for downstream entity recognition, the pipeline implements the \textbf{Inside-Outside-Beginning (IOB)} tagging schema. This standard sequence-labeling format allows the system to represent the precise boundaries of multi-word noun phrases (NPs) at the token level.
-
-\paragraph{Approach: Dependency-Based Chunking}
-
-Instead of using a simple Regular Expression (RegEx) parser, we implemented a methodology leveraging spaCy’s dependency parser. This allows the system to:
-\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
-  \item \textbf{Handle Complex Legal Syntax:} Legal text often contains nested modifiers. By utilizing the \texttt{noun\_chunks} iterator, we identify phrases based on their syntactic ``head'' noun rather than just linear word order.
-  \item \textbf{IOB Tagging Scheme Implementation:} We map the detected chunks to the required IOB format:
-        \begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
-          \item \textbf{B-NP (Beginning of Noun Phrase):} This tag is exclusively assigned to the very first token of a recognized noun phrase. It signals to the downstream model that a new entity or object boundary has started.
-          \item \textbf{I-NP (Inside a Noun Phrase):} This tag is assigned to all subsequent tokens that belong to the same noun phrase initiated by the B-NP tag.
-          \item \textbf{O (Outside):} This tag is assigned to any token that does not belong to a noun phrase. In legal contracts, this typically includes verbs, prepositions, coordinating conjunctions, and hard punctuation.
-        \end{itemize}
-\end{itemize}
-
-\paragraph{Refinement and Edge Case Handling}
-To meet the specific requirements of legal document processing, the following logic adjustments were made:
-
-\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
-  \item \textbf{Punctuation Filtering:} Standard legal punctuation (e.g., commas, periods, hyphens) is forced to the O tag to maintain clean boundaries between distinct legal entities.
-  \item \textbf{Strict Boundary Resets:} We implemented a ``reset'' mechanism where any token following an O tag must start with B-NP if it belongs to a new noun phrase. This prevents ``broken'' sequences where an I-NP incorrectly follows an O tag.
-  \item \textbf{Financial and Mathematical Symbols:} Special handling was applied to currency symbols (e.g., \textdollar) and operators (e.g., =) to ensure financial calculations and amounts remain semantically intact within their respective chunks.
-\end{itemize}
-
+The objective of this module is to identify key entities -- such as contracting parties, financial amounts, and legal deadlines -- by labeling noun phrases (NPs) within extracted clauses. To structure the extracted clauses for downstream entity recognition, the pipeline implements the \textbf{Inside-Outside-Beginning (IOB)} tagging schema. This standard sequence-labeling format allows the system to represent the precise boundaries of multi-word noun phrases (NPs) at the token level.
 \begin{algorithm}[H]
   \footnotesize
   \caption{IOB Noun Phrase Chunking with Boundary Reset}
@@ -586,11 +577,182 @@ To meet the specific requirements of legal document processing, the following lo
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
+\paragraph{Dependency-Based Chunking}
+Instead of using a simple Regular Expression (RegEx) parser, we implemented a methodology leveraging spaCy’s dependency parser. This allows the system to:
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{Handle Complex Legal Syntax:} Legal text often contains nested modifiers. By utilizing the \texttt{noun\_chunks} iterator, we identify phrases based on their syntactic ``head'' noun rather than just linear word order.
+  \item \textbf{IOB Tagging Scheme Implementation:} We map the detected chunks to the required IOB format:
+        \begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+          \item \textbf{B-NP (Beginning of Noun Phrase):} This tag is exclusively assigned to the very first token of a recognized noun phrase. It signals to the downstream model that a new entity or object boundary has started.
+          \item \textbf{I-NP (Inside a Noun Phrase):} This tag is assigned to all subsequent tokens that belong to the same noun phrase initiated by the B-NP tag.
+          \item \textbf{O (Outside):} This tag is assigned to any token that does not belong to a noun phrase. In legal contracts, this typically includes verbs, prepositions, coordinating conjunctions, and hard punctuation.
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Refinement and Edge Case Handling}
+To meet the specific requirements of legal document processing, the following logic adjustments were made:
+
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{Punctuation Filtering:} Standard legal punctuation (e.g., commas, periods, hyphens) is forced to the O tag to maintain clean boundaries between distinct legal entities.
+  \item \textbf{Strict Boundary Resets:} We implemented a ``reset'' mechanism where any token following an O tag must start with B-NP if it belongs to a new noun phrase. This prevents ``broken'' sequences where an I-NP incorrectly follows an O tag.
+  \item \textbf{Financial and Mathematical Symbols:} Special handling was applied to currency symbols (e.g., \textdollar) and operators (e.g., =) to ensure financial calculations and amounts remain semantically intact within their respective chunks.
+\end{itemize}
+
+\subsection{Qualitative Evaluation}
+The effectiveness of the dependency-aware Noun Phrase Chunking module is evaluated by examining its ability to maintain syntactic continuity across complex legal ownership structures. Traditional shallow parsers frequently fracture multi-word entities when encountering punctuation, coordinating conjunctions, or possessive markers. To demonstrate the robustness of the implemented IOB tagging schema, the following sample from the \textit{Sponsorship Agreement} illustrates the algorithm's handling of chained possessives and coordinated actors:
+\begin{center}
+  \small
+  \begin{tabular}{l|llllllll}
+    \textbf{Token}   & Merchant & 's   & or   & ISO  & 's   & participation & in & MasterCard \\
+    \hline
+    \textbf{IOB Tag} & B-NP     & I-NP & I-NP & I-NP & I-NP & I-NP          & O  & B-NP       \\
+  \end{tabular}
+\end{center}
+\paragraph{Syntactic Continuity and Possessive Chaining}
+As evidenced by the output above, the parser successfully maps the entire phrase \texttt{Merchant's or ISO's participation} as a single, contiguous semantic unit.
+
+\begin{itemize}[topsep=1pt, itemsep=0pt, parsep=2pt]
+  \item \textbf{Possessive Integrity:} The algorithm correctly identifies that the possessive suffixes (\texttt{'s}) are not independent tokens to be excluded, but rather integral modifiers linking the contracting parties (\texttt{Merchant}, \texttt{ISO}) to the target object (\texttt{participation}). Tagging them as I-NP ensures the ``Owner'' and ``Owned Object'' remain syntactically bound.
+  \item \textbf{Coordination Retention:} By tagging the conjunction \texttt{or} as I-NP, the pipeline avoids splitting the entity into two fragmented objects. This prevents \texttt{participation} from floating without its full ownership context, which is a vital prerequisite for accurately training the Named Entity Recognition model in Task~2.1.
+\end{itemize}
+
+\paragraph{Solving the ``Broken Chunk'' Problem}
+Furthermore, the implementation guarantees strict sequence adherence through its boundary reset logic. In standard rule-based chunking, filtering out specific tokens (such as prepositions or hard punctuation) often leads to the ``broken chunk'' problem, where an I-NP tag incorrectly immediately follows an O tag, invalidating the entity boundaries for downstream machine learning models.
+
+\medskip
+
+By dynamically resetting the beginning tag after any excluded token, the algorithm ensures that every newly initiated noun phrase strictly begins with a B-NP. The transition from \texttt{participation} (I-NP) to \texttt{in} (O) and immediately to \texttt{MasterCard} (B-NP) proves that the extraction sequence is fully sanitized, resolving the broken chunk vulnerability and generating an artifact that is perfectly aligned with standard sequence-labeling requirements.
 
 \section{Dependency Analysis}
+\subsection{Objective and Syntactic Mapping}
+The final component of the Assignment 1 NLP pipeline is \textbf{Dependency Analysis}. While Clause Splitting (\result{Section~\ref{task_1.1}}) isolated the semantic boundaries of the text and Noun Phrase Chunking (\result{Section~\ref{task_1.2}}) identified the specific entities involved, the objective of Dependency Analysis is to uncover the grammatical skeleton connecting them. This task extracts and maps the word-to-word \textit{head-dependent} relationships for every token within a given clause, creating a structured tree of syntactic dependencies.
 
+\subsubsection*{The Linguistic Utility in Legal English}
+Commercial contracts are notoriously dense, frequently employing passive voice, deep embedding, and vast distances between a governing verb and its associated subjects or objects. For instance, in a complex termination clause, a shallow keyword search or simple Part-of-Speech (POS) tagger might struggle to map the exact relationship between the acting party and the action due to the sheer volume of surrounding legal modifiers and conditions.
 
+\medskip
 
+Dependency mapping resolves this ambiguity by translating the linear text into a directed graph of the sentence syntax. By identifying the root predicate (\texttt{ROOT} = ``terminate'') and tracing its directed edges to the nominal subject (\texttt{nsubj} = ``ISO'') and the direct object (\texttt{dobj} = ``Agreement''), the pipeline exposes the core action of the clause regardless of word distance, intervening noise, or convoluted phrasing.
+
+\medskip
+
+This token-level syntactic mapping is not only a formal requirement of the project but also a critical necessity for advanced relation extraction. It provides the exact structural logic required to populate the target JSON schema, enabling downstream machine learning models to programmatically understand who is doing what to whom within the contract.
+
+\subsection{Methodology: The Universal Dependencies Framework}
+To programmatically extract the grammatical relationships within the segmented clauses, the pipeline utilizes the \textbf{Universal Dependencies (UD)} framework. UD is a standardized, cross-linguistic annotation schema that categorizes syntactic relationships between a ``head'' token and its syntactic ``dependents.''
+\subsubsection*{The Parsing Engine}
+The implementation leverages \textcolor{red}{spaCy}'s \texttt{en\_core\_web\_sm} model, which features a highly optimized, transition-based dependency parser. Unlike traditional constituency parsing -- which breaks sentences into nested phrase brackets -- transition-based dependency parsing establishes direct, directed arcs between individual words. During execution, the parser analyzes the topological structure of the clause and assigns a specific syntactic dependency label to every token. Key labels crucial for legal text analysis include:
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{ROOT}: The primary predicate or main verb of the clause (e.g., ``terminate'', ``warrant'', ``pay''). All other words in the sentence ultimately trace their dependency back to this root.
+  \item \textbf{nsubj} / \textbf{nsubjpass}: The nominal subject (or passive subject) performing the action, which usually identifies the obligated or acting party (e.g., ``ISO'', ``SERVICERS'').
+  \item \textbf{dobj} / \textbf{pobj}: The direct object of a verb or the object of a preposition, typically identifying the target of an action or rule (e.g., ``Agreement'', ``fees'').
+  \item \textbf{amod}: Adjectival modifiers that define the exact scope of legal entities (e.g., ``prior'' and ``written'' modifying ``notice'').
+\end{itemize}
+
+\subsubsection*{Handling Legal Modifiers and Complexity}
+Commercial contracts are characterized by extreme syntactic depth, heavily relying on chained prepositional phrases and clausal complements (e.g., ``in accordance with the terms of this Agreement'').
+
+\medskip
+
+The dependency-based methodology excels in this environment because it systematically decomposes these chains without losing the governing logic. The parser links prepositions (\texttt{prep}) to their governing verbs or nouns, and then maps them to their subsequent prepositional objects (\texttt{pobj}). By mapping these relationships as a directed graph, the pipeline ensures that subordinate conditions and complex legal modifiers do not break the analytical chain. This allows the system to trace a complete syntactic pathway from a deep modifier all the way back to the governing \texttt{ROOT} verb, capturing the full structural reality of the clause.
+\begin{algorithm}[H]
+  \footnotesize
+  \caption{Syntactic Dependency Extraction and JSON Serialization}
+  \begin{algorithmic}[1]
+    \Procedure{GenerateDependencyJSON}{$clauses$}
+    \State $dataset\_array \gets [\ ]$
+    \For{\textbf{each} $clause$ \textbf{in} $clauses$}
+    \State $dependencies \gets$ \Call{ExtractDependencies}{$clause$}
+    \State $clause\_record \gets \{\text{"Clause"}{:}\ clause,\ \text{"Dependencies"}{:}\ dependencies\}$
+    \State \Call{Append}{$dataset\_array,\ clause\_record$}
+    \EndFor
+    \State \Return $dataset\_array$
+    \EndProcedure
+    \Procedure{ExtractDependencies}{$clause$}
+    \State $doc \gets$ \Call{DependencyParse}{$clause$} \Comment{Generate directed syntactic graph}
+    \State $token\_mappings \gets [\ ]$
+    \For{\textbf{each} $token$ \textbf{in} $doc$}
+    \If{\texttt{token.text.strip() $\neq$ ""}} \Comment{Skip whitespace and empty tokens}
+    \State $dep\_entry \gets \{$
+    \State \quad $\text{"Token"}{:}\ token.text,$
+    \State \quad $\text{"Head"}{:}\ token.head.text,$ \Comment{String form of syntactic governor}
+    \State \quad $\text{"Dependency"}{:}\ token.dep\_label$
+    \State $\}$
+    \State \Call{Append}{$token\_mappings,\ dep\_entry$}
+    \EndIf
+    \EndFor
+    \State \Return $token\_mappings$
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+\subsection{Data Representation and JSON Schema}
+To transform the directed acyclic graph (DAG) generated by the dependency parser into a serializable format, the system implements a mapping function that iterates through the parsed text. Each token is converted into a structured entry within a JSON array, ensuring that the syntactic hierarchy is preserved through explicitly defined \texttt{Head} pointers.
+
+\subsubsection*{The Mapping Logic}
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{Serialization:} The implementation captures the literal string of each token (\texttt{Token}) and its immediate syntactic governor (\texttt{Head}). By representing the head as its string form (not as a numeric index), the structure remains human-readable and easily verifiable.
+  \item \textbf{Labeling:} The \texttt{Dependency} field utilizes standardized Universal Dependencies labels (such as \texttt{nsubj}, \texttt{ROOT}), explicitly codifying the grammatical relation for each token.
+  \item \textbf{Noise Reduction:} Before converting to JSON, the extraction process skips over any non-semantic tokens (such as whitespace or stray newlines) using a simple filter (\texttt{if token.text.strip():}). This prevents OCR or formatting artifacts from polluting the output.
+\end{itemize}
+
+\subsubsection*{Output Structure}
+The final output aggregates this information into a nested JSON array, where each entry contains a segmented clause and a list of its token-level dependency mappings:
+\begin{minted}[frame=lines, fontsize=\scriptsize, breaklines]{json}
+{
+  "Clause": "ISO may terminate this Agreement",
+  "Dependencies": [
+    { "Token": "ISO",       "Head": "terminate",   "Dependency": "nsubj" },
+    { "Token": "may",       "Head": "terminate",   "Dependency": "aux"   },
+    { "Token": "terminate", "Head": "terminate",   "Dependency": "ROOT"  },
+    { "Token": "this",      "Head": "Agreement",   "Dependency": "det"   },
+    { "Token": "Agreement", "Head": "terminate",   "Dependency": "dobj"  }
+  ]
+}
+\end{minted}
+
+This dictionary-based representation fulfills the data formatting requirements and provides a clean, machine-readable structure that supports both human audit and downstream automation for retrieval or relation extraction.
+
+\subsection{Technical Evaluation}
+The evaluation of the Dependency Analysis module focuses on two primary metrics: \textbf{syntactic fidelity} in complex legal sentences and \textbf{strict compliance} with the required JSON data schema.
+\begin{minted}[frame=lines, fontsize=\scriptsize, breaklines]{json}
+{
+  "Clause": "The confidential portion has been filed separately with the SEC.",
+  "Dependencies": [
+      { "Token":      "The",         "Head":      "portion",    "Dependency": "det"        },
+      { "Token":      "confidential","Head":      "portion",    "Dependency": "amod"       },
+      { "Token":      "portion",     "Head":      "filed",      "Dependency": "nsubjpass"  },
+      { "Token":      "has",         "Head":      "filed",      "Dependency": "aux"        },
+      { "Token":      "been",        "Head":      "filed",      "Dependency": "auxpass"    },
+      { "Token":      "filed",       "Head":      "filed",      "Dependency": "ROOT"       },
+      { "Token":      "separately",  "Head":      "filed",      "Dependency": "advmod"     },
+      { "Token":      "with",        "Head":      "filed",      "Dependency": "prep"       },
+      { "Token":      "the",         "Head":      "SEC",        "Dependency": "det"        },
+      { "Token":      "SEC",         "Head":      "with",       "Dependency": "pobj"       },
+      { "Token":      ".",           "Head":      "filed",      "Dependency": "punct"      }
+  ]
+}
+\end{minted}
+\subsubsection*{Syntactic Fidelity and Structural Accuracy}
+Using the Sponsorship Agreement as a structural baseline, the parser correctly identifies the relational triad of actors, actions, and objects. In the parsed clause ``ISO may terminate this Agreement,'' the algorithm successfully designates \texttt{terminate} as the grammatical \texttt{ROOT}.
+
+\medskip
+
+The dependency tree accurately maps the surrounding entities to this core predicate:
+
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{Nominal Subject (nsubj):} ``ISO'' is correctly identified as the acting party and assigned ``terminate'' as its syntactic head.
+  \item \textbf{Direct Object (dobj):} ``Agreement'' is correctly identified as the target of the action, also pointing directly to the root verb.
+  \item \textbf{Determiner (det):} The modifier ``this'' is correctly attached to its local head (``Agreement'') rather than floating independently.
+\end{itemize}
+
+This proves that the transition-based parser reliably captures the core intent of a legal clause. By anchoring the acting party and the target object to the predicate, the system preserves the legal logic even when clauses are inverted or padded with complex modifiers.
+
+\subsubsection*{Schema Compliance and Noise Robustness}
+The serialization module proved highly robust when converting the topological graph into the required flat JSON format. Every valid token is successfully mapped to the \texttt{Token}, \texttt{Head}, and \texttt{Dependency} keys without any data loss. Crucially, the implementation of the whitespace filtering heuristic effectively neutralized OCR layout artifacts. By enforcing a strict strip check before appending to the dictionary, stray newline characters, tab indents, and non-breaking spaces from the raw CUAD data were completely excluded from the final syntactic dataset.
+
+\medskip
+
+The resulting JSON arrays provide a pristine, machine-readable foundation. This output strictly fulfills the final structural requirement of Task 1, cleanly concluding the Processing and Syntax Analysis phase and preparing the text pipeline for the Machine Learning and Classification objectives in Assignment 2.
 
 
 % \bibliographystyle{plainnat}

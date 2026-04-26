@@ -42,10 +42,12 @@
 \newcommand{\@uniname}{HO CHI MINH CITY UNIVERSITY OF TECHNOLOGY}
 \newcommand{\@deptname}{FACULTY OF COMPUTER SCIENCE AND ENGINEERING}
 \newcommand{\@coursename}{Natural Language Processing\\CO3086}
-\newcommand{\@reporttype}{Full Technical Report\\\href{https://github.com/doxncwfn/trend-spy-bot/tree/main/src/backend/models/train}{\textcolor{blue}{Source Code}}}
+\newcommand{\@reporttype}{Assignment Technical Report\\\href{https://github.com/doxncwfn/LegalContract_RAGSystem}{\textcolor{blue}{Source Code}}}
 \renewcommand{\@title}{LEGAL CONTRACT INFORMATION EXTRACTION \& SEMANTIC ANALYSIS}
 \newcommand{\@advisor}{& Mr. Nam Duong Ho &}
-\newcommand{\@stuname}{& Cuong Doan Phuong Hung & ID 2310381}
+\newcommand{\@stuname}{& Cuong Doan Phuong Hung & ID 2310381\\
+  & Khiem Ton Vo Hoai & ID 2211576\\
+  & Phong Ha Thuc Thanh & ID 2212549}
 \newcommand{\stuname}[1]{\renewcommand{\@stuname}{#1}}
 \newcommand{\@reportplace}{Ho Chi Minh City}
 \newcommand{\reportplace}[1]{\renewcommand{\@reportplace}{#1}}
@@ -152,7 +154,7 @@
     \mdseries
     \begin{tabular}{rll}
       Instructor: \@advisor \\
-      Student: \@stuname    \\
+      Students: \@stuname   \\
     \end{tabular}
     \vfill
 
