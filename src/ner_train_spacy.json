@@ -1,0 +1,2162 @@
+[
+  {
+    "text": "Exhibit 10.1 Execution Copy SPONSORSHIP AGREEMENT dated January 29, 2007 between FIRST DATA MERCHANT SERVICES CORPORATION, WELLS FARGO BANK, N.A. and iPAYMENT, INC.",
+    "entities": [
+      [0, 12, "EXHIBIT"],
+      [28, 49, "AGREEMENT"],
+      [56, 72, "DATE"],
+      [81, 145, "PARTY"],
+      [150, 164, "PARTY"]
+    ]
+  },
+  {
+    "text": "SPONSORSHIP AGREEMENT This Sponsorship Agreement (this \"Agreement\") dated as of January 29, 2007 (the \"Effective Date\") is by and between iPayment, Inc. (\"ISO\"), First Data Merchant Services Corporation (\"FDMS\"), and Wells Fargo Bank, N.A. (\"Bank\").",
+    "entities": [
+      [0, 21, "AGREEMENT"],
+      [27, 48, "AGREEMENT"],
+      [80, 96, "DATE"],
+      [138, 152, "PARTY"],
+      [155, 158, "PARTY"],
+      [162, 202, "PARTY"],
+      [205, 209, "PARTY"],
+      [217, 239, "PARTY"],
+      [242, 246, "PARTY"]
+    ]
+  },
+  {
+    "text": "Under this Agreement, FDMS and Bank will collectively be referred to as \"SERVICERS.",
+    "entities": [
+      [6, 20, "AGREEMENT"],
+      [22, 26, "PARTY"],
+      [31, 35, "PARTY"],
+      [73, 82, "PARTY"]
+    ]
+  },
+  {
+    "text": "\" RECITALS A. Bank is a Member of Visa and MasterCard, and, as such, is authorized to sign agreements enabling Merchants to accept Visa and MasterCard Bank Cards from their customers in accordance with the terms and conditions of their respective Rules and regulations.",
+    "entities": [
+      [14, 18, "PARTY"],
+      [34, 38, "PARTY"],
+      [43, 53, "PARTY"],
+      [131, 135, "PARTY"],
+      [140, 150, "PARTY"],
+      [151, 155, "PARTY"],
+      [247, 252, "POLICY"],
+      [257, 268, "POLICY"]
+    ]
+  },
+  {
+    "text": "B. ISO is a registered \"independent sales organization\" with Visa and a registered \"member service provider\" with MasterCard and is in the business of developing and marketing Merchant Bank Card programs, originating Merchant relationships, and providing Merchant Bank Card management services.",
+    "entities": [
+      [3, 6, "PARTY"],
+      [61, 65, "PARTY"],
+      [114, 124, "PARTY"]
+    ]
+  },
+  {
+    "text": "C. In conjunction with the processing services rendered to ISO by FDMS pursuant to the Service Agreement dated as of July 1, 2002 by and between ISO and FDMS, as amended (the \"Service Agreement\"), ISO and SERVICERS desire to establish the sponsorship of a Merchant processing Program on the terms and conditions set forth in this Agreement.",
+    "entities": [
+      [87, 104, "AGREEMENT"],
+      [117, 129, "DATE"],
+      [145, 148, "PARTY"],
+      [153, 157, "PARTY"],
+      [176, 193, "AGREEMENT"],
+      [325, 339, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "D. ISO, as assignee of Transaction Solutions, LLC, and Concord Transaction Services, LLC, successor in interest to EFS National Bank and an Affiliate of FDMS, are parties to that certain ISO Services and Marketing Agreement dated as of April 17, 2002, as amended (the \"TS ISO Agreement\").",
+    "entities": [
+      [3, 6, "PARTY"],
+      [23, 49, "PARTY"],
+      [55, 88, "PARTY"],
+      [115, 132, "PARTY"],
+      [153, 157, "PARTY"],
+      [187, 223, "AGREEMENT"],
+      [236, 250, "DATE"],
+      [269, 285, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "The parties now desire to terminate the TS ISO Agreement and to incorporate the services provided thereunder into this Agreement and the Service Agreement.",
+    "entities": [
+      [40, 56, "AGREEMENT"],
+      [114, 128, "AGREEMENT"],
+      [137, 154, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "E. ISO, as assignee of Petroleum Card Services, Inc., and CTS Holdings, LLC successor in interest to Concord Payment Systems, Inc. and National Payment Systems, Inc. and an Affiliate of FDMS, are parties to that certain Processing Service Agreement dated as of April 16, 2001, as amended (the \"PCS ISO Agreement\").",
+    "entities": [
+      [3, 6, "PARTY"],
+      [23, 52, "PARTY"],
+      [58, 75, "PARTY"],
+      [101, 130, "PARTY"],
+      [135, 165, "PARTY"],
+      [186, 190, "PARTY"],
+      [220, 248, "AGREEMENT"],
+      [261, 275, "DATE"],
+      [294, 311, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "The parties now desire to terminate the PCS ISO Agreement and to incorporate the services provided thereunder into this Agreement and the Service Agreement.",
+    "entities": [
+      [40, 57, "AGREEMENT"],
+      [115, 129, "AGREEMENT"],
+      [138, 155, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "F. Bank is the acquiring bank for the transactions processed under the TS ISO Agreement and the PCS ISO Agreement.",
+    "entities": [
+      [71, 87, "AGREEMENT"],
+      [96, 113, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "AGREEMENT In consideration of the foregoing and the covenants and conditions contained herein, the parties agree as follows: SECTION 1 DEFINITIONS As used in this Agreement (including the recitals set forth above), the following terms shall have the meanings set forth below (each of which includes the singular and the plural): \"ACH\" shall mean the electronic transfer of funds through an automated clearing house system.",
+    "entities": [
+      [125, 134, "SECTION"],
+      [158, 172, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"Affiliate\" shall mean any entity that directly or indirectly controls, is controlled by or is under common control with a party.",
+    "entities": []
+  },
+  {
+    "text": "\"Applicant\" shall mean a Merchant who submits an Application.",
+    "entities": []
+  },
+  {
+    "text": "\"Application\" shall mean the Merchant application used by ISO, as provided by and/or approved by SERVICERS and ISO, and other existing Merchant applications assigned to Bank as part of the initial BIN/ICA transfer.",
+    "entities": [
+      [58, 61, "PARTY"],
+      [97, 106, "PARTY"],
+      [111, 114, "PARTY"],
+      [169, 173, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Application Materials\" shall mean the Application and all other materials developed to facilitate the execution of Merchant Processing Agreements, as approved by SERVICERS and ISO.",
+    "entities": [
+      [116, 146, "AGREEMENT"],
+      [163, 172, "PARTY"],
+      [177, 180, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall cease its use of any Application Materials that become unacceptable to SERVICERS within ninety (90) days of receipt of written notice from SERVICERS or such shorter period of time as may be required to comply with the Rules or to prevent a loss to SERVICERS.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [81, 90, "PARTY"],
+      [98, 114, "DATE"],
+      [149, 158, "PARTY"],
+      [228, 233, "POLICY"],
+      [258, 267, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Approved Merchant\" means any Merchant that:",
+    "entities": []
+  },
+  {
+    "text": "(a) Is solicited by ISO (or ISO's Other MSP's or IC's) for participation in the Program;",
+    "entities": [
+      [20, 23, "PARTY"],
+      [28, 31, "PARTY"]
+    ]
+  },
+  {
+    "text": "(b) Meets the established criteria for participation in the Program, including the Merchant Processing Policy;",
+    "entities": [[83, 109, "POLICY"]]
+  },
+  {
+    "text": "and (c) Enters into a Merchant Processing Agreement.",
+    "entities": [[22, 51, "AGREEMENT"]]
+  },
+  {
+    "text": "Approved Merchants may also include Merchants converted to the Program as part of the initial BIN/ICA transfer and/or subsequently acquired Merchants that meet the established criteria for participation in the Program, including the Merchant Processing Policy, and whose sponsorship is assigned to Bank.",
+    "entities": [
+      [233, 259, "POLICY"],
+      [298, 302, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Bank Card\" shall mean a credit card or debit card issued by a member of MasterCard, Visa or any other association or card issuing organization (including Debit Networks) and bearing its respective trade names, trademarks, and/or trade symbols.",
+    "entities": [
+      [1, 5, "PARTY"],
+      [73, 83, "PARTY"],
+      [85, 89, "PARTY"],
+      [155, 169, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Business Day\" shall mean any day on which Bank is open for business, other than Saturdays, Sundays, or state or federal holidays.",
+    "entities": [
+      [0, 13, "DATE"],
+      [26, 33, "DATE"],
+      [43, 47, "PARTY"],
+      [81, 90, "DATE"],
+      [92, 99, "DATE"]
+    ]
+  },
+  {
+    "text": "\"Change of Control\" means a change in the power to direct the management or affairs of ISO or the beneficial ownership of more than 51% of the equity securities;",
+    "entities": [[87, 90, "PARTY"]]
+  },
+  {
+    "text": "provided, however, that becoming a public company with the same management team or changing the beneficial ownership of more than 51% of the equity securities while maintaining the same management team will not constitute a change in control.",
+    "entities": []
+  },
+  {
+    "text": "\"Confidential Information\" shall mean non-public information about, and proprietary materials of, any party as defined and more fully described in Section 9.1.",
+    "entities": [[147, 158, "SECTION"]]
+  },
+  {
+    "text": "\"Deconversion\" shall mean the activities performed by SERVICERS at the request of ISO to effect a Program Transfer, which activities and associated fees/costs will be set forth in a written plan developed before any such activities are begun and in good faith by ISO and SERVICERS that is designed to complete the Program Transfer within 6 months, at SERVICERS' then-current fees/costs.",
+    "entities": [
+      [54, 63, "PARTY"],
+      [82, 85, "PARTY"],
+      [263, 266, "PARTY"],
+      [271, 280, "PARTY"],
+      [338, 346, "DATE"],
+      [351, 360, "PARTY"]
+    ]
+  },
+  {
+    "text": "If ISO requests no services from SERVICERS in connection with the deconversion, then there will be no fees/costs to ISO other than any pass-through Bank Card association fees, if any.",
+    "entities": [
+      [3, 6, "PARTY"],
+      [33, 42, "PARTY"],
+      [116, 119, "PARTY"],
+      [148, 152, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Effective Date\" is defined in the first paragraph of this Agreement.",
+    "entities": [[54, 68, "AGREEMENT"]]
+  },
+  {
+    "text": "\"Eligible Merchant\" shall mean a Merchant that meets the Merchant Processing Policy and is solicited for the Program by ISO or ISO's Other MSP's or IC's.",
+    "entities": [
+      [57, 83, "POLICY"],
+      [120, 123, "PARTY"],
+      [127, 130, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"FFB\" means FDMS's Affiliate, First Financial FFB, an industrial bank formed under the laws of the State of Colorado.",
+    "entities": [
+      [1, 4, "PARTY"],
+      [12, 16, "PARTY"],
+      [30, 49, "PARTY"],
+      [65, 69, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"IC\" shall have the meaning provided in Section 2.4.",
+    "entities": [[40, 51, "SECTION"]]
+  },
+  {
+    "text": "\"Including\" whether capitalized or not, means \"including but not limited to.",
+    "entities": []
+  },
+  {
+    "text": "\" \"Intellectual Property\" shall mean copyrights, Marks, trade secrets, patents or other proprietary rights of a party.",
+    "entities": []
+  },
+  {
+    "text": "\"ISO\" includes ISO's wholly-owned subsidiaries that are either independently registered with Visa and MasterCard or solicit Merchants under the ISO's registration, and also includes, when the context so requires, ISO's Other MSP's and IC's.",
+    "entities": [
+      [1, 4, "PARTY"],
+      [15, 18, "PARTY"],
+      [93, 97, "PARTY"],
+      [102, 112, "PARTY"],
+      [144, 147, "PARTY"],
+      [213, 216, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Losses\" shall mean any losses, damages, liabilities, judgments, orders of restitution, and penalties (including civil monetary penalties and Visa and MasterCard fines and penalties).",
+    "entities": [
+      [142, 146, "PARTY"],
+      [151, 161, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Marks\" shall mean the trademarks or service marks of a party.",
+    "entities": []
+  },
+  {
+    "text": "\"MasterCard\" shall mean MasterCard International, Incorporated.",
+    "entities": [
+      [1, 11, "PARTY"],
+      [24, 62, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Material\" when used with reference to information, a fact or circumstance, a course of action, a decision-making process or other matter, shall be limited to information, facts and circumstances, courses of action, decision-making processes or other matters as to which there is a substantial likelihood that a reasonable person would attach importance.",
+    "entities": []
+  },
+  {
+    "text": "\"Member\" shall mean an acquiring member of Visa and MasterCard.",
+    "entities": [
+      [43, 47, "PARTY"],
+      [52, 62, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Merchant\" shall mean an individual or entity that engages in, or desires to engage in, Bank Card transactions with its customers.",
+    "entities": [[88, 97, "PARTY"]]
+  },
+  {
+    "text": "\"Merchant Account\" shall mean the account relationship established between ISO, Bank and an Approved Merchant pursuant to a Merchant Processing Agreement.",
+    "entities": [
+      [75, 78, "PARTY"],
+      [124, 153, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"Merchant Discount Amount\" shall mean the portion of the face amount of Bank Card transactions submitted by Approved Merchants and processed through the Program that is paid to SERVICERS.",
+    "entities": [
+      [72, 76, "PARTY"],
+      [177, 186, "PARTY"]
+    ]
+  },
+  {
+    "text": "Further, this portion shall be determined by application of the Merchant Discount Rate that is reflected in each Merchant Processing Agreement.",
+    "entities": [[113, 142, "AGREEMENT"]]
+  },
+  {
+    "text": "\"Merchant Discount Rate\" shall mean a percentage rate to be applied to determine the portion of the face amount of a Bank Card transaction that will be charged to the originating Merchant, which rate shall be reflected in each Merchant Processing Agreement and subject to change from time to time pursuant to the terms of the Merchant Processing Agreement.",
+    "entities": [
+      [117, 121, "PARTY"],
+      [227, 256, "AGREEMENT"],
+      [326, 355, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"Merchant Portfolio\" shall mean the group of Approved Merchants participating in the Program pursuant to this Agreement.",
+    "entities": [[105, 119, "AGREEMENT"]]
+  },
+  {
+    "text": "\"Merchant Processing Policy\" shall mean the merchant policy, guidelines and standards established by SERVICERS under which SERVICERS will enter into a Merchant Processing Agreement with a Merchant as it may be modified by SERVICERS in their discretion from time to time during the term of this Agreement.",
+    "entities": [
+      [1, 27, "POLICY"],
+      [151, 180, "AGREEMENT"],
+      [289, 303, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "Attached as Exhibit B is a list of certain categories of Merchants who are always unacceptable under the Merchant Processing Policy, along with a summary of other policy guidelines and standards.",
+    "entities": [
+      [12, 21, "EXHIBIT"],
+      [105, 131, "POLICY"]
+    ]
+  },
+  {
+    "text": "\"Merchant Processing Agreement\" shall mean a written agreement among ISO, Bank and an Approved Merchant that governs the Approved Merchant's participation in the Program, as provided by and/or approved by SERVICERS and ISO.",
+    "entities": [
+      [1, 30, "AGREEMENT"],
+      [69, 72, "PARTY"],
+      [74, 78, "PARTY"],
+      [83, 103, "PARTY"],
+      [117, 140, "PARTY"],
+      [205, 214, "PARTY"],
+      [219, 222, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall cease its use of any form of Merchant Processing Agreement that becomes unacceptable to SERVICERS within ninety (90) days of receipt of written notice from SERVICERS or such shorter period of time as may be required to comply with the Rules or to prevent a loss to SERVICERS.",
+    "entities": [
+      [39, 68, "AGREEMENT"],
+      [98, 107, "PARTY"],
+      [115, 131, "DATE"],
+      [166, 175, "PARTY"],
+      [245, 250, "POLICY"],
+      [275, 284, "PARTY"]
+    ]
+  },
+  {
+    "text": "For the avoidance of doubt, ISO shall be responsible for effecting any necessary and appropriate amendments to the Merchant Processing Agreement that may become necessary as a result of subsequent amendments to the Rules or SERVICERS' requirements.",
+    "entities": [
+      [115, 144, "AGREEMENT"],
+      [215, 220, "POLICY"],
+      [224, 247, "POLICY"]
+    ]
+  },
+  {
+    "text": "In the event a Merchant refuses to consent to any such amendment during the applicable ninety (90) day period, ISO will notify SERVICERS.",
+    "entities": [
+      [87, 102, "DATE"],
+      [111, 114, "PARTY"],
+      [127, 136, "PARTY"]
+    ]
+  },
+  {
+    "text": "and Bank or FFB will have the right to terminate its sponsorship of such Merchant and the applicable Merchant Processing Agreement.",
+    "entities": [[101, 130, "AGREEMENT"]]
+  },
+  {
+    "text": "\"Merchant Reserve Account\" shall mean one or more accounts maintained by SERVICERS as security against Merchant liabilities to ISO or SERVICERS.",
+    "entities": [
+      [73, 82, "PARTY"],
+      [127, 130, "PARTY"],
+      [134, 143, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Minimum Balance\" shall have the meaning provided in Section 6.1(a).",
+    "entities": [[53, 64, "SECTION"]]
+  },
+  {
+    "text": "\"Net Program Participation Fees\" shall mean, at any point in time, all Program Participation Fees minus the sum of:",
+    "entities": []
+  },
+  {
+    "text": "(a) All compensation and other amounts (including unreimbursed chargebacks and payments to the Reserve Account) due SERVICERS;",
+    "entities": [
+      [91, 110, "PARTY"],
+      [116, 125, "PARTY"]
+    ]
+  },
+  {
+    "text": "(b) (c) Pass-Through Costs and Interchange.",
+    "entities": []
+  },
+  {
+    "text": "\"Offset Account\" shall mean an account at Bank that is established and maintained by FDMS to allow SERVICERS to credit and debit funds as provided in Section 6.",
+    "entities": [
+      [42, 46, "PARTY"],
+      [85, 89, "PARTY"],
+      [99, 108, "PARTY"],
+      [150, 159, "SECTION"]
+    ]
+  },
+  {
+    "text": "\"Other MSP\" shall have the meaning provided in Section 2.4.",
+    "entities": [[47, 58, "SECTION"]]
+  },
+  {
+    "text": "\"Pass-Through Costs and Interchange\" shall mean the amounts charged by MasterCard, Visa, and other networks or Bank Card associations (including interchange fees, dues and assessments) in connection with the Approved Merchant transactions, the liability for which shall be the sole responsibility of ISO except as otherwise described herein.",
+    "entities": [
+      [71, 81, "PARTY"],
+      [83, 87, "PARTY"],
+      [111, 120, "PARTY"],
+      [300, 303, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Payment Date\" means:",
+    "entities": []
+  },
+  {
+    "text": "(i) for Merchant Accounts originally covered by the TS ISO Agreement and the PCS ISO Agreement, the day (or first Business Day thereafter if such day is not a Business Day) of each calendar month during the term of this Agreement;",
+    "entities": [
+      [52, 68, "AGREEMENT"],
+      [77, 94, "AGREEMENT"],
+      [96, 107, "DATE"],
+      [108, 126, "DATE"],
+      [157, 171, "DATE"],
+      [176, 195, "DATE"],
+      [215, 229, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "and (ii) for all other Merchant Accounts on the FDMS \"Omaha\" platform covered by this Agreement, the first Business Day after the day the funds are available and in Bank's settlement account, but in no event later than days after the end of each month.",
+    "entities": [
+      [48, 52, "PARTY"],
+      [54, 59, "PARTY"],
+      [81, 95, "AGREEMENT"],
+      [97, 119, "DATE"],
+      [165, 169, "PARTY"],
+      [208, 251, "DATE"]
+    ]
+  },
+  {
+    "text": "\"Processing Year 1\" means the period commencing on the Effective Date and ending on June 30, 2007.",
+    "entities": [[84, 97, "DATE"]]
+  },
+  {
+    "text": "*** Omitted pursuant to a confidential treatment request.",
+    "entities": []
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "\"Processing Year\" means each twelve (12) calendar month period commencing on the first day of July and ending on the last day of the following June, except for Processing Year 1 which is specifically defined.",
+    "entities": [
+      [77, 98, "DATE"],
+      [113, 147, "DATE"]
+    ]
+  },
+  {
+    "text": "\"Program\" shall mean ISO's sales and marketing activities on behalf of itself and SERVICERS, the processing of Merchant Applications, and the provision of Bank Card transaction processing services to Approved Merchants under the terms of their Merchant Processing Agreements.",
+    "entities": [
+      [21, 24, "PARTY"],
+      [82, 91, "PARTY"],
+      [155, 159, "PARTY"],
+      [244, 274, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"Program Participation Fees\" shall mean all fees owed by Merchants to Bank and ISO under the applicable Merchant Processing Agreements, including the Merchant Discount Amounts or transaction fees, which amounts shall be recommended by ISO, but in all cases will be subject to final approval by Bank, which approval shall not be unreasonably withheld or delayed.",
+    "entities": [
+      [70, 74, "PARTY"],
+      [79, 82, "PARTY"],
+      [104, 134, "AGREEMENT"],
+      [235, 238, "PARTY"],
+      [294, 298, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Program Standards\" means the policies and procedures established by SERVICERS to be used by ISO in connection with the solicitation of prospective Merchants and other policies, procedures, fines and penalties established by SERVICERS that are designed to promote the financial safety or soundness of the Program.",
+    "entities": [
+      [1, 18, "POLICY"],
+      [69, 78, "PARTY"],
+      [93, 96, "PARTY"],
+      [225, 234, "PARTY"]
+    ]
+  },
+  {
+    "text": "The Program Standards may be modified by SERVICERS from time to time in their sole discretion;",
+    "entities": [
+      [4, 21, "POLICY"],
+      [41, 50, "PARTY"]
+    ]
+  },
+  {
+    "text": "provided, however, that SERVICERS will discuss in good faith any concerns that ISO may have that any such change will adversely affect ISO's ability to add Approved Merchants to the Program.",
+    "entities": [
+      [24, 33, "PARTY"],
+      [79, 82, "PARTY"],
+      [135, 138, "PARTY"]
+    ]
+  },
+  {
+    "text": "The current form of the Program Standards are attached hereto as Exhibit D. \"Program Transfer\" shall mean Bank's transfer and assignment of the Merchant Portfolio and the dedicated BINs/ICAs, including Bank's interest in all Merchant Processing Agreements, to a third party designated by ISO in accordance with Section 10.4.",
+    "entities": [
+      [24, 41, "POLICY"],
+      [65, 74, "EXHIBIT"],
+      [106, 110, "PARTY"],
+      [202, 206, "PARTY"],
+      [225, 255, "AGREEMENT"],
+      [288, 291, "PARTY"],
+      [311, 323, "SECTION"]
+    ]
+  },
+  {
+    "text": "\"Promotional Materials\" shall mean all written solicitations and advertisements and other communications (including telemarketing scripts) used to market, promote, and solicit the establishment of Merchant Processing Agreements with Merchants.",
+    "entities": [[197, 227, "AGREEMENT"]]
+  },
+  {
+    "text": "\"PS ISO Agreement\" is defined in Recital E of this Agreement.",
+    "entities": [
+      [1, 17, "AGREEMENT"],
+      [46, 60, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"Reserve Account\" shall mean the account at Bank that is to be established by ISO and fully controlled by SERVICERS as described in Section 8.1 to insure payment of chargebacks, fees and other amounts due to SERVICERS.",
+    "entities": [
+      [44, 48, "PARTY"],
+      [78, 81, "PARTY"],
+      [106, 115, "PARTY"],
+      [132, 143, "SECTION"],
+      [208, 217, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Residual Account\" shall mean an account established and maintained by (and in the name of) ISO to allow Bank to credit funds as provided in Section 6.",
+    "entities": [
+      [92, 95, "PARTY"],
+      [105, 109, "PARTY"],
+      [141, 150, "SECTION"]
+    ]
+  },
+  {
+    "text": "\"Rules\" shall mean the by-laws, regulations and/or requirements that are promulgated by Visa, MasterCard, Debit Networks and/or other Bank Card associations.",
+    "entities": [
+      [1, 6, "POLICY"],
+      [32, 43, "POLICY"],
+      [88, 92, "PARTY"],
+      [94, 104, "PARTY"],
+      [106, 120, "PARTY"],
+      [134, 138, "PARTY"]
+    ]
+  },
+  {
+    "text": "\"Service Agreement\" is defined in Recital C of this Agreement.",
+    "entities": [
+      [1, 18, "AGREEMENT"],
+      [47, 61, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"Termination Reserve Account\" shall mean a reserve account to be established upon notice of termination of this Agreement to insure the payment of chargebacks and credit/fraud losses related to transactions with an acquirer's processing date on or before the effective date of termination of this Agreement, fees and other amounts which may become due to SERVICERS following termination of this Agreement.",
+    "entities": [
+      [107, 121, "AGREEMENT"],
+      [292, 306, "AGREEMENT"],
+      [390, 404, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"TS ISO Agreement\" is defined in Recital D of this Agreement.",
+    "entities": [
+      [1, 17, "AGREEMENT"],
+      [46, 60, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "\"Visa\" shall mean VISA USA Incorporated.",
+    "entities": [
+      [1, 5, "PARTY"],
+      [18, 39, "PARTY"]
+    ]
+  },
+  {
+    "text": "SECTION 2 PROGRAM SERVICES 2.1 SERVICERS' Services/Pricing.",
+    "entities": [
+      [0, 9, "SECTION"],
+      [27, 30, "SECTION"],
+      [31, 40, "PARTY"]
+    ]
+  },
+  {
+    "text": "(a) SERVICERS shall provide the services specified in this Agreement and the exhibits and shall be compensated therefor as set forth in the Service Agreement and in Exhibit A hereto.",
+    "entities": [
+      [54, 68, "AGREEMENT"],
+      [140, 157, "AGREEMENT"],
+      [165, 174, "EXHIBIT"]
+    ]
+  },
+  {
+    "text": "Any and all processing and related services rendered by SERVICERS to an Approved Merchant in the Merchant Portfolio covered by this Agreement (including without limitation Merchants initially processed under the TS ISO Agreement and the PCS ISO Agreement) will be rendered pursuant to and billed at the rates set forth in the Service Agreement.",
+    "entities": [
+      [127, 141, "AGREEMENT"],
+      [212, 228, "AGREEMENT"],
+      [237, 254, "AGREEMENT"],
+      [326, 343, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "Any and all sponsorship, clearing and related services rendered by SERVICERS in connection with an Approved Merchant in the Merchant Portfolio covered by this Agreement (including without limitation Merchants initially processed under the TS ISO Agreement and the PCS ISO Agreement) will be rendered pursuant to and billed at the rates set forth in this Agreement.",
+    "entities": [
+      [154, 168, "AGREEMENT"],
+      [239, 255, "AGREEMENT"],
+      [264, 281, "AGREEMENT"],
+      [349, 363, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "Any Approved Merchant added to the Merchant Portfolio and Program covered by this Agreement will be subject to all terms and conditions of this Agreement.",
+    "entities": [
+      [77, 91, "AGREEMENT"],
+      [139, 153, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "(b) Any service described in this Agreement is subject to periodic revision by SERVICERS to reflect changes (i) to the SERVICERS' systems or the services provided by SERVICERS and offered generally to SERVICERS' customers and (ii) in the specific services provided to ISO;",
+    "entities": [
+      [29, 43, "AGREEMENT"],
+      [79, 88, "PARTY"],
+      [119, 128, "PARTY"],
+      [166, 175, "PARTY"],
+      [201, 210, "PARTY"],
+      [268, 271, "PARTY"]
+    ]
+  },
+  {
+    "text": "provided, however, that SERVICERS will not implement any changes or improvements to the services if such action will materially degrade the quality of the services being provided to ISO by SERVICERS hereunder unless such change is required by the VISA or MasterCard rules and regulations.",
+    "entities": [
+      [24, 33, "PARTY"],
+      [182, 185, "PARTY"],
+      [189, 198, "PARTY"],
+      [247, 251, "PARTY"],
+      [255, 265, "PARTY"],
+      [266, 271, "POLICY"],
+      [276, 287, "POLICY"]
+    ]
+  },
+  {
+    "text": "(c) SERVICERS may from time to time pass through to ISO actual increases in the Pass-Through Costs and Interchange, to reflect any increases in such fees, costs and charges to SERVICERS, upon thirty (30) days prior written notice to ISO (or, if SERVICERS receive less than thirty (30) days notice of such increase, as much prior notice as is practicable under the circumstances).",
+    "entities": [
+      [4, 13, "PARTY"],
+      [52, 55, "PARTY"],
+      [176, 185, "PARTY"],
+      [192, 208, "DATE"],
+      [233, 236, "PARTY"],
+      [245, 254, "PARTY"],
+      [263, 289, "DATE"]
+    ]
+  },
+  {
+    "text": "(d) In the event of any fee increases to ISO, SERVICERS shall provide reasonable assistance to ISO in passing such fee increases through to Merchants under the Merchant Processing Agreements.",
+    "entities": [
+      [41, 44, "PARTY"],
+      [46, 55, "PARTY"],
+      [95, 98, "PARTY"],
+      [160, 190, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "(e) From time to time and in their sole discretion, SERVICERS may also perform certain risk management services, such as periodic credit reviews, fraud reviews and monitoring and collections, with respect to Applicants and Approved Merchants;",
+    "entities": [[52, 61, "PARTY"]]
+  },
+  {
+    "text": "provided, however, that SERVICERS will not contact such Applicants or Approved Merchants directly and will request any reasonably necessary information or documentation from ISO.",
+    "entities": [
+      [24, 33, "PARTY"],
+      [174, 177, "PARTY"]
+    ]
+  },
+  {
+    "text": "SERVICERS' participation in any such activity shall not in any way relieve ISO from its responsibility for credit and fraud losses which may result from or be related to the Program.",
+    "entities": [
+      [0, 9, "PARTY"],
+      [75, 78, "PARTY"]
+    ]
+  },
+  {
+    "text": "(f) SERVICERS will provide ISO with a point of contact to address issues that arise in connection with this Agreement, which will be one or more employees of FDMS.",
+    "entities": [
+      [103, 117, "AGREEMENT"],
+      [158, 162, "PARTY"]
+    ]
+  },
+  {
+    "text": "2.2 ISO Obligations.",
+    "entities": [
+      [0, 3, "SECTION"],
+      [4, 7, "PARTY"]
+    ]
+  },
+  {
+    "text": "(a) ISO shall perform all sales and marketing activities in furtherance of the Program, subject to the terms of this Agreement.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [112, 126, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "It is understood that (at all times) SERVICERS have the ultimate approval right for ISO's solicitation procedures, Application Materials, Application processing procedures, Merchant qualification criteria, transaction processing procedures, Merchant Processing Agreements, Program terms, Program Participation Fees, and other Program policies, all of which must be approved in advance by SERVICERS in writing.",
+    "entities": [
+      [37, 46, "PARTY"],
+      [84, 87, "PARTY"],
+      [241, 271, "AGREEMENT"],
+      [388, 397, "PARTY"]
+    ]
+  },
+  {
+    "text": "(b) ISO shall also perform all initial Merchant credit review and underwriting on Applicants in a manner consistent with Section 4 of this Agreement, including the Merchant Processing Policy.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [121, 130, "SECTION"],
+      [134, 148, "AGREEMENT"],
+      [164, 190, "POLICY"]
+    ]
+  },
+  {
+    "text": "ISO shall at all times comply with the Program Standards.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [39, 56, "POLICY"]
+    ]
+  },
+  {
+    "text": "(c) ISO will use reasonable efforts to convert the sponsorship and clearing of all Merchants processing on the FDMS system under the Service Agreement to the sponsorship and clearing of Bank under the terms and conditions of this Agreement;",
+    "entities": [
+      [133, 150, "AGREEMENT"],
+      [225, 239, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "provided, however, that ISO will not be required to attempt to convert any such Merchants if the Merchant refuses to be sponsored by Bank, if the applicable Other MSP or IC refuses to board accounts on the FDMS System or be sponsored by Bank.",
+    "entities": [
+      [24, 27, "PARTY"],
+      [133, 137, "PARTY"],
+      [202, 217, "PARTY"],
+      [237, 241, "PARTY"]
+    ]
+  },
+  {
+    "text": "or if the conversion of such merchants would not make economic or strategic business sense to ISO.",
+    "entities": [[94, 97, "PARTY"]]
+  },
+  {
+    "text": "(d) For the avoidance of doubt, the parties acknowledge that ISO may utilize SERVICERS' services under this Agreement on a non- exclusive basis and there are no minimum fees or utilization commitments under this Agreement.",
+    "entities": [
+      [61, 64, "PARTY"],
+      [77, 86, "PARTY"],
+      [103, 117, "AGREEMENT"],
+      [207, 221, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "2.3 BIN and ICA Assignment.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "SERVICERS will utilize BINs (Bank Identification Number) and ICAs (Interbank Card Association) dedicated solely to ISO to facilitate the Program.",
+    "entities": [
+      [0, 9, "PARTY"],
+      [29, 33, "PARTY"],
+      [115, 118, "PARTY"]
+    ]
+  },
+  {
+    "text": "and no merchants other than Program Merchants will be under the dedicated BIN/ICA.",
+    "entities": []
+  },
+  {
+    "text": "The initial BINs/ICAs to be transferred to Bank from ISO's current sponsoring Member as part of the Program launch are listed on Exhibit E. ISO shall be responsible, and shall reimburse SERVICERS, for all actual, documented fees and costs imposed by third parties associated with obtaining, installing and maintaining the BIN/ICA on the FDMS system, including any Visa and MasterCard fees and assessments.",
+    "entities": [
+      [43, 47, "PARTY"],
+      [53, 56, "PARTY"],
+      [129, 138, "EXHIBIT"],
+      [140, 143, "PARTY"],
+      [186, 195, "PARTY"],
+      [337, 341, "PARTY"],
+      [364, 368, "PARTY"],
+      [373, 383, "PARTY"]
+    ]
+  },
+  {
+    "text": "Upon a Program Transfer in accordance with Section 10.4, Bank will transfer the dedicated BINs/ICAs used in connection with the Program to a Visa and MasterCard Member designated by ISO.",
+    "entities": [
+      [43, 55, "SECTION"],
+      [57, 61, "PARTY"],
+      [141, 145, "PARTY"],
+      [150, 160, "PARTY"],
+      [182, 185, "PARTY"]
+    ]
+  },
+  {
+    "text": "2.4 Use of Other Independent Sales Organizations/Independent Contractors.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "(a) Except as expressly set forth herein, ISO shall not subcontract, assign, license or in any other manner extend or transfer to any third party any right or obligation ISO has with respect to SERVICERS' Program.",
+    "entities": [
+      [42, 45, "PARTY"],
+      [170, 173, "PARTY"],
+      [194, 212, "PARTY"]
+    ]
+  },
+  {
+    "text": "If ISO desires to use the services of any other independent sales organization/member service provider (\"Other MSP\"), such Other MSP must be (i) reviewed and approved by SERVICERS, in their sole discretion, (ii) contracted with SERVICERS or Bank upon mutually agreeable terms, and (iii) registered with Visa and MasterCard by Bank in accordance with the Rules.",
+    "entities": [
+      [3, 6, "PARTY"],
+      [170, 179, "PARTY"],
+      [228, 237, "PARTY"],
+      [241, 245, "PARTY"],
+      [303, 307, "PARTY"],
+      [312, 322, "PARTY"],
+      [326, 330, "PARTY"],
+      [354, 359, "POLICY"]
+    ]
+  },
+  {
+    "text": "If ISO desires to use the services of an individual independent contractor who represents himself or herself as working for ISO using ISO's legal/business name (\"IC\"), then ISO shall enter into a written agreement with each such IC that (i) requires the IC to comply with all applicable terms of this Agreement and all applicable Rules, laws and regulations, and (ii) prohibits the making of any representation or creating any liability on behalf of SERVICERS.",
+    "entities": [
+      [3, 6, "PARTY"],
+      [124, 127, "PARTY"],
+      [134, 137, "PARTY"],
+      [173, 176, "PARTY"],
+      [296, 310, "AGREEMENT"],
+      [330, 335, "POLICY"],
+      [346, 357, "POLICY"],
+      [450, 459, "PARTY"]
+    ]
+  },
+  {
+    "text": "(b) ISO's currently utilizes the Other MSP's and IC's listed on Exhibit E attached hereto in its Merchant processing business.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [64, 73, "EXHIBIT"]
+    ]
+  },
+  {
+    "text": "The parties agree to work together expeditiously and in good faith to transfer the registration or re-register all such entities with the appropriate Bank Card associations as required under the Rules.",
+    "entities": [
+      [150, 154, "PARTY"],
+      [195, 200, "POLICY"]
+    ]
+  },
+  {
+    "text": "All Other MSP's must be appropriately registered before boarding accounts under Bank's sponsorship.",
+    "entities": [[80, 84, "PARTY"]]
+  },
+  {
+    "text": "2.5 SERVICERS' Obligations.",
+    "entities": [
+      [0, 3, "SECTION"],
+      [4, 13, "PARTY"]
+    ]
+  },
+  {
+    "text": "(a) Bank will sponsor ISO, at ISO's expense, as an ISO for Visa, as an MSP for MasterCard and, to the extent applicable, as similarly required for all other Bank Card associations and, to the extent required by any Bank Card association, Bank also agrees to sponsor for registration with Visa and/or MasterCard those Other MSP's, IC's, subsidiaries and marketing representatives of ISO which are approved by SERVICERS.",
+    "entities": [
+      [4, 8, "PARTY"],
+      [22, 25, "PARTY"],
+      [30, 33, "PARTY"],
+      [51, 54, "PARTY"],
+      [59, 63, "PARTY"],
+      [79, 89, "PARTY"],
+      [157, 166, "PARTY"],
+      [215, 224, "PARTY"],
+      [238, 242, "PARTY"],
+      [288, 292, "PARTY"],
+      [300, 310, "PARTY"],
+      [382, 385, "PARTY"],
+      [408, 417, "PARTY"]
+    ]
+  },
+  {
+    "text": "Unless otherwise disallowed by a Bank Card association, Bank agrees to maintain such sponsorships throughout the term of this Agreement and until the first of either to occur:",
+    "entities": [
+      [33, 42, "PARTY"],
+      [121, 135, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "(i) days after the *** Omitted pursuant to a confidential treatment request.",
+    "entities": [[4, 8, "DATE"]]
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "expiration or earlier termination of this Agreement, or (ii) the effective date of the assignment of all of the Merchant Processing Agreements or all of the BINs/ICAs and other items specified and contemplated in Section 10.4.",
+    "entities": [
+      [37, 51, "AGREEMENT"],
+      [112, 142, "AGREEMENT"],
+      [213, 225, "SECTION"]
+    ]
+  },
+  {
+    "text": "(b) From time to time, and within a reasonable time from Bank's receipt of notice of an amendment to the Rules that is not otherwise available to ISO, Bank will advise ISO, who shall, in turn, notify each Merchant, of any change in the Merchant Program imposed by the Rules.",
+    "entities": [
+      [57, 61, "PARTY"],
+      [105, 110, "POLICY"],
+      [146, 149, "PARTY"],
+      [151, 155, "PARTY"],
+      [168, 171, "PARTY"],
+      [268, 273, "POLICY"]
+    ]
+  },
+  {
+    "text": "(c) At ISO's request, Bank will obtain copies for ISO of any Bank Card association manuals and publications (including Rules) that are available to acquiring members and that are not otherwise available to ISO.",
+    "entities": [
+      [7, 10, "PARTY"],
+      [22, 26, "PARTY"],
+      [50, 53, "PARTY"],
+      [61, 65, "PARTY"],
+      [119, 124, "POLICY"],
+      [206, 209, "PARTY"]
+    ]
+  },
+  {
+    "text": "and that are allowed to be shared with ISO under the Rules.",
+    "entities": [
+      [39, 42, "PARTY"],
+      [53, 58, "POLICY"]
+    ]
+  },
+  {
+    "text": "Bank will forward to ISO all information routinely provided by each Bank Card association that is not otherwise available to ISO that are allowed to be shared with ISO under the Rules that would be helpful to ISO in fulfilling its obligations under this Agreement.",
+    "entities": [
+      [178, 183, "POLICY"],
+      [249, 263, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "(d) Bank will maintain all cardholder information under its control and/or possession in a safe and secure manner in compliance with the Rules, and will report to Bank Card associations as required by the Rules relating to internal policies and procedures related to cardholder information security.",
+    "entities": [
+      [4, 8, "PARTY"],
+      [137, 142, "POLICY"],
+      [163, 172, "PARTY"],
+      [205, 210, "POLICY"]
+    ]
+  },
+  {
+    "text": "Furthermore, Bank agrees to inform the ISO immediately regarding any breach of information security that may have an adverse effect to the ISO or to its Merchants.",
+    "entities": [
+      [13, 17, "PARTY"],
+      [39, 42, "PARTY"],
+      [139, 142, "PARTY"]
+    ]
+  },
+  {
+    "text": "(e) Bank, as the acquiring principal member, agrees to represent ISO's interest in disputes that might arise from time to time with a Bank Card association over compliance with Rules and fines;",
+    "entities": [
+      [4, 8, "PARTY"],
+      [65, 68, "PARTY"],
+      [134, 138, "PARTY"],
+      [177, 182, "POLICY"]
+    ]
+  },
+  {
+    "text": "provided, however, that ISO shall pay any fines or other charges imposed on Bank by a Bank Card association relating to the Merchant Program and any and all costs reasonably incurred by Bank in disputing the same, including reasonable associated legal fees.",
+    "entities": [
+      [24, 27, "PARTY"],
+      [76, 80, "PARTY"],
+      [86, 90, "PARTY"],
+      [120, 140, "PARTY"],
+      [186, 190, "PARTY"]
+    ]
+  },
+  {
+    "text": "(f) FDMS has entered into an agreement with FFB, pursuant to which FFB will sponsor (or assume the sponsorship of) Merchants, FDMS and its customers, including ISO, into certain networks (\"Debit Sponsorship\").",
+    "entities": [
+      [4, 8, "PARTY"],
+      [44, 47, "PARTY"],
+      [67, 70, "PARTY"],
+      [126, 130, "PARTY"],
+      [160, 163, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO agrees to the additional terms and conditions relating specifically to the Debit Sponsorship, as set forth in Exhibit G. SECTION 3 MARKETING AND COMPLIANCE 3.1 Application Materials.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [114, 123, "EXHIBIT"],
+      [125, 134, "SECTION"],
+      [160, 163, "SECTION"]
+    ]
+  },
+  {
+    "text": "ISO shall use reasonable efforts to ensure that each Application completed by an Applicant is current and contains accurate and complete information.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "ISO's Application Materials shall comply with all applicable Rules, laws and regulations.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [61, 66, "POLICY"],
+      [77, 88, "POLICY"]
+    ]
+  },
+  {
+    "text": "All Application Materials and any changes to the form and content thereof must be approved in writing by SERVICERS prior to use by ISO, which approval will not be unreasonably withheld or delayed beyond days unless such changes *** Omitted pursuant to a confidential treatment request.",
+    "entities": [
+      [105, 114, "PARTY"],
+      [131, 134, "PARTY"],
+      [203, 207, "DATE"]
+    ]
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "are voluminous.",
+    "entities": []
+  },
+  {
+    "text": "The initial approved Application Materials are attached hereto as Exhibit C. 3.2 Compliance Responsibility.",
+    "entities": [
+      [66, 75, "EXHIBIT"],
+      [77, 80, "SECTION"]
+    ]
+  },
+  {
+    "text": "ISO shall be responsible for ensuring that the Application Materials, the marketing plans, the Promotional Materials and all services performed by ISO hereunder comply, and remain in compliance with, all applicable Rules, laws and regulations;",
+    "entities": [
+      [0, 3, "PARTY"],
+      [147, 150, "PARTY"],
+      [215, 220, "POLICY"],
+      [231, 242, "POLICY"]
+    ]
+  },
+  {
+    "text": "provided, however, that SERVICERS will in good faith inform ISO of issues or concerns with ISO's materials or practices observed by SERVICERS that SERVICERS reasonably believe may be in violation of applicable Rules.",
+    "entities": [
+      [24, 33, "PARTY"],
+      [60, 63, "PARTY"],
+      [91, 94, "PARTY"],
+      [132, 141, "PARTY"],
+      [147, 156, "PARTY"],
+      [210, 215, "POLICY"]
+    ]
+  },
+  {
+    "text": "All documents and any changes to the form and content thereof must be approved in writing by SERVICERS prior to use by ISO, which approval will not be unreasonably withheld or delayed beyond fifteen (15) days.",
+    "entities": [
+      [93, 102, "PARTY"],
+      [119, 122, "PARTY"],
+      [191, 208, "DATE"]
+    ]
+  },
+  {
+    "text": "3.3 Promotional Materials.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "ISO shall be responsible, at its sole expense, for the development of all Promotional Materials and shall bear the cost of the development and the printing and distribution of the Promotional Materials.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "The Promotional Materials shall comply with all applicable Rules, laws and regulations.",
+    "entities": [
+      [59, 64, "POLICY"],
+      [75, 86, "POLICY"]
+    ]
+  },
+  {
+    "text": "All Promotional Materials and any changes to the form and content thereof must be approved in writing by SERVICERS prior to use by ISO, which approval will not be unreasonably withheld or delayed beyond fifteen (15) days.",
+    "entities": [
+      [105, 114, "PARTY"],
+      [131, 134, "PARTY"],
+      [203, 220, "DATE"]
+    ]
+  },
+  {
+    "text": "ISO and ISO's Other MSP's and IC's will not use SERVICERS' or SERVICERS' Affiliates' Marks in any advertising, promotional or display materials without SERVICERS' prior written approval, which approval will not be unreasonably withheld or delayed beyond fifteen (15) days.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [8, 11, "PARTY"],
+      [48, 57, "PARTY"],
+      [62, 71, "PARTY"],
+      [152, 161, "PARTY"],
+      [254, 271, "DATE"]
+    ]
+  },
+  {
+    "text": "SECTION 4 APPLICATION AND UNDERWRITING PROCEDURES 4.1 Applications.",
+    "entities": [
+      [0, 9, "SECTION"],
+      [50, 53, "SECTION"]
+    ]
+  },
+  {
+    "text": "ISO shall solicit Applications from Eligible Merchants at ISO's sole expense and shall provide each Applicant with Application Materials.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [58, 61, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall collect completed and signed Application Materials and Merchant Processing Agreements from Applicants and shall forward them to SERVICERS within Business Days after the merchant is boarded (which may be accessed by SERVICERS online or forwarded to SERVICERS via ISO's automated application system or to a facsimile number designated by SERVICERS, provided such complies with the Rules and applicable laws, rules and regulations) or to any other place(s) as SERVICERS may designate for processing and document storage.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [65, 95, "AGREEMENT"],
+      [138, 147, "PARTY"],
+      [155, 168, "DATE"],
+      [225, 234, "PARTY"],
+      [258, 267, "PARTY"],
+      [272, 275, "PARTY"],
+      [346, 355, "PARTY"],
+      [389, 394, "POLICY"],
+      [416, 421, "POLICY"],
+      [426, 437, "POLICY"],
+      [467, 476, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall retain copies of all Application Materials, Merchant Processing Agreements and documents forwarded to SERVICERS.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [54, 84, "AGREEMENT"],
+      [112, 121, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall provide SERVICERS with access to ISO's automated application system and ISO's online Merchant Account system (BAMS, or any such successor or replacement system) at no cost to SERVICERS.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [18, 27, "PARTY"],
+      [43, 46, "PARTY"],
+      [82, 85, "PARTY"],
+      [185, 194, "PARTY"]
+    ]
+  },
+  {
+    "text": "4.2 Underwriting.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "ISO shall underwrite, perform a credit review and conduct a site inspection, when applicable, for each Application as required by this Agreement, the Merchant Processing Policy and the Rules to determine whether each Applicant is an Eligible Merchant.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [130, 144, "AGREEMENT"],
+      [150, 176, "POLICY"],
+      [185, 190, "POLICY"]
+    ]
+  },
+  {
+    "text": "ISO may conduct such credit review without notification to and participation by SERVICERS, except as otherwise provided below (i.e., for any *** Omitted pursuant to a confidential treatment request.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [80, 89, "PARTY"]
+    ]
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "prospective Merchant that falls within the risk and volume parameters set forth in this Section 4.2), provided that ISO performs the credit review in accordance with the Merchant Processing Policy, the terms of this Agreement and the Rules.",
+    "entities": [
+      [88, 99, "SECTION"],
+      [116, 119, "PARTY"],
+      [170, 196, "POLICY"],
+      [211, 225, "AGREEMENT"],
+      [234, 239, "POLICY"]
+    ]
+  },
+  {
+    "text": "In accordance with and as permitted by this Agreement, a third-party service provider approved by SERVICERS may perform site inspections for ISO.",
+    "entities": [
+      [39, 53, "AGREEMENT"],
+      [98, 107, "PARTY"],
+      [141, 144, "PARTY"]
+    ]
+  },
+  {
+    "text": "In order to assist ISO in its underwriting hereunder, SERVICERS shall assist ISO with checking Merchants and prospective Merchants against the Terminated Merchant File/MATCH List or any similar list maintained by any entity.",
+    "entities": [
+      [19, 22, "PARTY"],
+      [54, 63, "PARTY"],
+      [77, 80, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall be responsible for all credit and fraud losses associated with the Merchant Portfolio or the Program, regardless of any services or assistance that may be provided by SERVICERS.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [177, 186, "PARTY"]
+    ]
+  },
+  {
+    "text": "For any high risk Merchant who in good faith ISO anticipates will have annual Visa and MasterCard transaction volume equal to or greater than $ and any low risk Merchant who in good faith ISO anticipates will have annual Visa and MasterCard transaction volume equal to or greater than $, ISO shall advise SERVICERS and permit SERVICERS to conduct their own credit review prior to boarding the account.",
+    "entities": [
+      [45, 48, "PARTY"],
+      [71, 77, "DATE"],
+      [78, 82, "PARTY"],
+      [87, 97, "PARTY"],
+      [188, 191, "PARTY"],
+      [214, 220, "DATE"],
+      [221, 225, "PARTY"],
+      [230, 240, "PARTY"],
+      [288, 291, "PARTY"],
+      [305, 314, "PARTY"],
+      [326, 335, "PARTY"]
+    ]
+  },
+  {
+    "text": "Upon receipt of a complete underwriting package from ISO, SERVICERS will respond to ISO within Business Days as to SERVICERS' acceptance or rejection of such Merchant.",
+    "entities": [
+      [53, 56, "PARTY"],
+      [58, 67, "PARTY"],
+      [84, 87, "PARTY"],
+      [95, 108, "DATE"],
+      [115, 124, "PARTY"]
+    ]
+  },
+  {
+    "text": "SERVICERS' participation in any credit review will not in any way relieve ISO from its responsibility for credit and fraud losses which may result from a Merchant's transaction processing.",
+    "entities": [
+      [0, 9, "PARTY"],
+      [74, 77, "PARTY"]
+    ]
+  },
+  {
+    "text": "SERVICERS may at any time require that a Merchant relationship be terminated by ISO and Bank may cease the provision of services to any such Merchant pursuant to the terms of the Merchant Processing Agreement.",
+    "entities": [[179, 208, "AGREEMENT"]]
+  },
+  {
+    "text": "SERVICERS shall have the right and authority to accept or reject any Application.",
+    "entities": [[0, 9, "PARTY"]]
+  },
+  {
+    "text": "ISO shall obtain prospective Merchants' authorization for ISO and/or SERVICERS to obtain all reports (including personal and business credit reports) and other information necessary in connection with the Application.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [58, 61, "PARTY"],
+      [69, 78, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall have the right, subject to and pursuant to the terms and conditions of the Merchant Processing Policy, to cause any Eligible Merchant with transaction card volume processing limits up to but not more than $ per month, that has been approved by ISO, to be activated immediately in SERVICES' systems.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [85, 111, "POLICY"],
+      [254, 257, "PARTY"]
+    ]
+  },
+  {
+    "text": "SERVICERS agree to provide ISO with a final approval decision (i.e., acceptance, rejection or required modification of the submitted Application) on submitted and complete Merchant Applications for Eligible Merchants that are not classified as \"high risk\" on the High Risk Merchant List attached hereto as Exhibit F.",
+    "entities": [
+      [0, 9, "PARTY"],
+      [27, 30, "PARTY"],
+      [306, 315, "EXHIBIT"]
+    ]
+  },
+  {
+    "text": "and which seek approval for transaction card volume processing limits in excess of $ per month but not more than $ per month, within Business Days after SERVICERS' receipt of such completed Merchant Application and documentation.",
+    "entities": [
+      [133, 146, "DATE"],
+      [153, 162, "PARTY"]
+    ]
+  },
+  {
+    "text": "4.3 Credit Decisions.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "ISO shall employ the Merchant Processing Policy guidelines provided by SERVICERS in making credit evaluations.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [21, 47, "POLICY"],
+      [71, 80, "PARTY"]
+    ]
+  },
+  {
+    "text": "SERVICERS reserve the right, in their sole and absolute discretion, to:",
+    "entities": [[0, 9, "PARTY"]]
+  },
+  {
+    "text": "(a) Change the Merchant Processing Policy;",
+    "entities": [[15, 41, "POLICY"]]
+  },
+  {
+    "text": "(b) Reject the Application of any Applicant who SERVICERS determine does not satisfy SERVICERS' Merchant Processing Policy;",
+    "entities": [
+      [48, 57, "PARTY"],
+      [85, 94, "PARTY"],
+      [96, 122, "POLICY"]
+    ]
+  },
+  {
+    "text": "and *** Omitted pursuant to a confidential treatment request.",
+    "entities": []
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "(c) Terminate the Merchant Processing Agreement with respect to any Merchant at any time, according to the Merchant Processing Agreement terms.",
+    "entities": [
+      [18, 47, "AGREEMENT"],
+      [107, 136, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "Notwithstanding anything contained herein, so long as all of the following are true with respect to a Merchant or Merchant Account, SERVICERS agree that, except as required by the Rules, SERVICERS shall neither terminate nor make any change with respect to the discount or reserve of said Merchant or Merchant Account that will have an adverse effect on the Merchant or Merchant Account without the prior written consent of ISO:",
+    "entities": [
+      [132, 141, "PARTY"],
+      [180, 185, "POLICY"],
+      [187, 196, "PARTY"],
+      [424, 427, "PARTY"]
+    ]
+  },
+  {
+    "text": "(i) The Merchant or Merchant Account is not in a Bank Card association monitoring program;",
+    "entities": [[49, 53, "PARTY"]]
+  },
+  {
+    "text": "(ii) The Merchant or Merchant Account is not engaged in, or aiding and abetting, any illegal activity or fraud;",
+    "entities": []
+  },
+  {
+    "text": "(iii) The Merchant or Merchant Account is in compliance with the Merchant Processing Policy;",
+    "entities": [[65, 91, "POLICY"]]
+  },
+  {
+    "text": "(iv) The Merchant or Merchant Account is not processing transactions where products are delivered.",
+    "entities": []
+  },
+  {
+    "text": "or services rendered more than one (1) year (on the average, based upon transactions of the immediately preceding three (3) months) following the date of the transaction;",
+    "entities": [
+      [21, 43, "DATE"],
+      [88, 130, "DATE"]
+    ]
+  },
+  {
+    "text": "(v) No Bank Card association nor any regulatory agency has requested that the Merchant or Merchant Account be terminated;",
+    "entities": [[7, 11, "PARTY"]]
+  },
+  {
+    "text": "(vi) In its sole judgment, SERVICERS do not feel that they may be at financial risk as a result of the activity of a Merchant or Merchant Account;",
+    "entities": [[27, 36, "PARTY"]]
+  },
+  {
+    "text": "and (vii) The Merchant or Merchant Account is not causing reputational harm or risk to either of SERVICERS in their reasonable judgment.",
+    "entities": [[97, 106, "PARTY"]]
+  },
+  {
+    "text": "In the event SERVICERS decide to terminate or make any such adverse change with respect to a Merchant or Merchant Account, SERVICERS shall first attempt to give ISO notice of SERVICERS' decision.",
+    "entities": [
+      [13, 22, "PARTY"],
+      [123, 132, "PARTY"],
+      [161, 164, "PARTY"],
+      [175, 184, "PARTY"]
+    ]
+  },
+  {
+    "text": "4.4 Merchant Reserve Accounts.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "ISO shall be responsible for determining the amount of any Merchant Reserve Accounts.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "ISO shall also be responsible for ensuring all Merchant Reserve Accounts are adequately funded.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "All Merchant Reserve Accounts, along with any other monies or collateral collected from Approved Merchants, shall be deposited with Bank.",
+    "entities": [
+      [88, 106, "PARTY"],
+      [132, 136, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO will monitor daily Merchant account activity.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [17, 22, "DATE"]
+    ]
+  },
+  {
+    "text": "and if in ISO's reasonable judgment certain Approved Merchants and/or certain transactions are possibly fraudulent or otherwise not in *** Omitted pursuant to a confidential treatment request.",
+    "entities": [[10, 13, "PARTY"]]
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "compliance with the Rules or in violation of the Merchant Processing Agreement, ISO will instruct SERVICERS to change the Merchant bank account information to cause funds otherwise due such Merchant to be diverted and deposited into the Merchant Reserve Account for such Merchant.",
+    "entities": [
+      [20, 25, "POLICY"],
+      [49, 78, "AGREEMENT"],
+      [80, 83, "PARTY"],
+      [98, 107, "PARTY"],
+      [131, 135, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO will thereafter promptly investigate each such suspicious incident and, upon request, promptly notify SERVICERS of the result of any such investigation.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [106, 115, "PARTY"]
+    ]
+  },
+  {
+    "text": "If in any case ISO's investigation determines that no violation occurred, ISO will promptly request SERVICERS to release any funds diverted to the Merchant Reserve Account to the Merchant's deposit account.",
+    "entities": [
+      [15, 18, "PARTY"],
+      [74, 77, "PARTY"],
+      [100, 109, "PARTY"]
+    ]
+  },
+  {
+    "text": "Once monies or other collateral are deposited in a Merchant Reserve Account, SERVICERS shall control the disbursements of such funds which are to be (a) paid to ISO or SERVICERS to cover losses incurred in connection with the applicable Approved Merchant or (b) returned to the applicable Approved Merchant upon a reduction in the potential risk to ISO and SERVICERS arising from the provision of services to such Merchant within two (2) Business Days after receipt of a written request by ISO.",
+    "entities": [
+      [77, 86, "PARTY"],
+      [161, 164, "PARTY"],
+      [168, 177, "PARTY"],
+      [289, 306, "PARTY"],
+      [349, 352, "PARTY"],
+      [357, 366, "PARTY"],
+      [490, 493, "PARTY"]
+    ]
+  },
+  {
+    "text": "From time to time, ISO may request SERVICERS to disburse monies held in a Merchant Reserve Account to ISO or an Approved Merchant as set forth in the preceding sentence.",
+    "entities": [
+      [19, 22, "PARTY"],
+      [35, 44, "PARTY"],
+      [102, 105, "PARTY"]
+    ]
+  },
+  {
+    "text": "and SERVICERS shall consider such requests in good faith.",
+    "entities": [[4, 13, "PARTY"]]
+  },
+  {
+    "text": "Bank may draw against any Merchant Reserve Account to cover any Losses or credit and fraud losses incurred by SERVICERS with respect to an Approved Merchant without the consent of ISO or the applicable Approved Merchant.",
+    "entities": [
+      [0, 4, "PARTY"],
+      [110, 119, "PARTY"],
+      [180, 183, "PARTY"]
+    ]
+  },
+  {
+    "text": "4.5 Maintenance of Underwriting Staff.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "ISO shall at all times maintain an adequate and qualified staff to perform underwriting and credit reviews of Program Merchants.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "SECTION 5 PROPRIETARY RIGHTS 5.1 General.",
+    "entities": [
+      [0, 9, "SECTION"],
+      [29, 32, "SECTION"]
+    ]
+  },
+  {
+    "text": "To the extent required by the Rules, legal title to all Merchant Applications, Merchant Processing Agreements and Merchant Accounts and records shall be in the name of Bank, subject to its obligations to effect a Program Transfer pursuant to Section 10.4 of this Agreement;",
+    "entities": [
+      [30, 35, "POLICY"],
+      [79, 109, "AGREEMENT"],
+      [168, 172, "PARTY"],
+      [242, 254, "SECTION"],
+      [258, 272, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "provided, however, that Bank acknowledges and agrees that ISO shall own and maintain the Merchant relationship during the term of this Agreement and thereafter.",
+    "entities": [[130, 144, "AGREEMENT"]]
+  },
+  {
+    "text": "ISO acknowledges and agrees that all Merchant Applications, Merchant Processing Agreements and Merchant Accounts and records may not be transferred, assigned, sold or exchanged by ISO except as set forth in this Agreement or the applicable Merchant Processing Agreement.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [60, 90, "AGREEMENT"],
+      [207, 221, "AGREEMENT"],
+      [240, 269, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "Bank shall be exclusively responsible and entitled to receive all payments, collections, and other amounts due from Merchants, subject to its payment obligations to ISO.",
+    "entities": [
+      [0, 4, "PARTY"],
+      [165, 168, "PARTY"]
+    ]
+  },
+  {
+    "text": "Each of ISO's and Bank's rights shall survive the termination of this Agreement by either party and for whatever cause.",
+    "entities": [
+      [8, 11, "PARTY"],
+      [18, 22, "PARTY"],
+      [65, 79, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "For the avoidance of doubt, the parties acknowledge and agree that ISO owns all Merchant Processing Agreements, Merchant Accounts and Merchant relationships except as otherwise specifically set forth herein.",
+    "entities": [
+      [67, 70, "PARTY"],
+      [80, 110, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "SECTION 6 SETTLEMENT AND PAYMENT 6.1 Offset Account.",
+    "entities": [
+      [0, 9, "SECTION"],
+      [33, 36, "SECTION"]
+    ]
+  },
+  {
+    "text": "(a) FDMS shall establish and maintain the Offset Account at Bank during the term of this Agreement to facilitate the making of all payments due to SERVICERS from ISO and to ISO from SERVICERS.",
+    "entities": [
+      [84, 98, "AGREEMENT"],
+      [147, 156, "PARTY"],
+      [162, 165, "PARTY"],
+      [173, 176, "PARTY"],
+      [182, 191, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO agrees that the initial amount of the Offset Account will be $.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "and, thereafter, the Offset Account will, at all times, maintain collected funds in an amount at least equal to the amount then due SERVICERS hereunder (which shall be referred to herein as the \"Minimum Balance\").",
+    "entities": [[132, 141, "PARTY"]]
+  },
+  {
+    "text": "(b) If the collected funds on deposit in the Offset Account at any point in time are less than the Minimum Balance, SERVICERS may fund the Offset Account with any monies or funds belonging or payable to ISO which are in SERVICERS' possession.",
+    "entities": [
+      [116, 125, "PARTY"],
+      [203, 206, "PARTY"],
+      [220, 229, "PARTY"]
+    ]
+  },
+  {
+    "text": "SERVICERS will promptly notify ISO after making any such transfer.",
+    "entities": [
+      [0, 9, "PARTY"],
+      [31, 34, "PARTY"]
+    ]
+  },
+  {
+    "text": "(c) ISO hereby grants SERVICERS a security interest in the Offset Account to secure all of ISO's obligations to SERVICERS under this Agreement.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [22, 31, "PARTY"],
+      [91, 94, "PARTY"],
+      [128, 142, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "6.2 Settlement Procedures.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "(a) SERVICERS shall settle each Merchant Account in accordance with the terms of the applicable Merchant Processing Agreement, remitting to each Approved Merchant, by ACH or other acceptable method, all settled funds due to the Approved Merchant after first deducting from such settled funds all applicable Program Participation Fees and any other amounts owed or withheld under the applicable Merchant Processing Agreement.",
+    "entities": [
+      [96, 125, "AGREEMENT"],
+      [394, 423, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "Merchant Account settlement is included in the fees set forth in Exhibit A and will not incur an additional fee.",
+    "entities": [[65, 74, "EXHIBIT"]]
+  },
+  {
+    "text": "(b) On each Payment Date, SERVICERS shall credit ISO's Residual Account in an amount equal to all Net Program Participation Fees collected by SERVICERS since the immediately preceding Payment Date and which have not otherwise been paid to ISO.",
+    "entities": [
+      [26, 35, "PARTY"],
+      [49, 52, "PARTY"],
+      [142, 151, "PARTY"],
+      [239, 242, "PARTY"]
+    ]
+  },
+  {
+    "text": "(c) In the event that the Net Program Participation Fees are insufficient to pay any amounts due to SERVICERS' under this Agreement (including compensation, funding the Offset Account, funding the Reserve Account, or paying third party processing fees), then ISO shall provide sufficient additional funds to SERVICERS upon demand.",
+    "entities": [
+      [100, 109, "PARTY"],
+      [117, 131, "AGREEMENT"],
+      [259, 262, "PARTY"],
+      [308, 317, "PARTY"]
+    ]
+  },
+  {
+    "text": "(d) *** Omitted pursuant to a confidential treatment request.",
+    "entities": []
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "6.3 Payment Deferrals.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "In addition to any rights now or hereafter granted under this Agreement or applicable law.",
+    "entities": [[57, 71, "AGREEMENT"]]
+  },
+  {
+    "text": "and not by way of limitation of any such rights, SERVICERS are hereby authorized by ISO, at any time and from time to time, without notice or demand to ISO or to any other person (any such notice and demand being hereby expressly waived), to setoff, recoup and to appropriate and to apply any and all monies or funds belonging or payable to ISO which are in Bank's possession against and on account of ISO's obligations to SERVICERS under this Agreement (including funding the Offset Account, the Reserve Account, the Termination Reserve Account or funding chargebacks), whether such obligations are liquidated, unliquidated, fixed, contingent, matured or unmatured.",
+    "entities": [
+      [49, 58, "PARTY"],
+      [84, 87, "PARTY"],
+      [152, 155, "PARTY"],
+      [341, 344, "PARTY"],
+      [358, 362, "PARTY"],
+      [402, 405, "PARTY"],
+      [439, 453, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "6.4 Expenses.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "Except as otherwise provided, each party shall bear its own administrative costs and overhead expenses arising out of its performance of this Agreement.",
+    "entities": [[137, 151, "AGREEMENT"]]
+  },
+  {
+    "text": "6.5 Liability for Losses.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "Unless any Losses are caused by SERVICERS or are attributable to the negligence or willful misconduct of SERVICERS, SERVICERS shall have recourse from ISO.",
+    "entities": [
+      [32, 41, "PARTY"],
+      [105, 114, "PARTY"],
+      [116, 125, "PARTY"],
+      [151, 154, "PARTY"]
+    ]
+  },
+  {
+    "text": "and ISO shall fully reimburse SERVICERS, for any Losses to SERVICERS that are caused by:",
+    "entities": [
+      [4, 7, "PARTY"],
+      [30, 39, "PARTY"],
+      [59, 68, "PARTY"]
+    ]
+  },
+  {
+    "text": "(a) Chargebacks, purchase returns, refunds, credits, adjustments, fees or Bank Card association fines, costs and expenses related to Approved Merchants, Eligible Merchants, or any Merchant activity hereunder;",
+    "entities": [[74, 78, "PARTY"]]
+  },
+  {
+    "text": "and (b) Amounts remaining due to SERVICERS after the deduction of SERVICERS' compensation as provided herein.",
+    "entities": [
+      [33, 42, "PARTY"],
+      [66, 75, "PARTY"]
+    ]
+  },
+  {
+    "text": "6.6 Bank Card Association Assessments/Fees.",
+    "entities": [
+      [0, 3, "SECTION"],
+      [4, 8, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO shall pay or fund when due all Bank Card association assessments/fees, including any and all quarterly assessments/fees.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [35, 44, "PARTY"],
+      [97, 106, "DATE"]
+    ]
+  },
+  {
+    "text": "6.7 Survival.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "The provisions of this Section 6 shall survive the termination or expiration of this Agreement.",
+    "entities": [
+      [23, 32, "SECTION"],
+      [80, 94, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "*** Omitted pursuant to a confidential treatment request.",
+    "entities": []
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "6.8 Assignment of Merchant Losses.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "SERVICERS agree that after SERVICERS have been fully reimbursed by ISO for a Merchant loss pursuant to this Agreement, and provided that the Merchant Account resulting in the Merchant loss has been terminated, that SERVICERS will, at the request of ISO, assign to ISO any and all of SERVICERS' subrogation rights under or related to the Merchant Processing Agreement (including guarantees, security or otherwise) related to the indebtedness of such Merchant under the Merchant Processing Agreement (including guarantees, security or otherwise), so that ISO may pursue collection recovery activities in connection with such Merchant loss.",
+    "entities": [
+      [103, 117, "AGREEMENT"],
+      [215, 224, "PARTY"],
+      [249, 252, "PARTY"],
+      [264, 267, "PARTY"],
+      [283, 292, "PARTY"],
+      [337, 366, "AGREEMENT"],
+      [468, 497, "AGREEMENT"],
+      [553, 556, "PARTY"]
+    ]
+  },
+  {
+    "text": "Any such collection recovery activities shall be conducted in the name of ISO and shall be subject to the indemnification obligations of ISO.",
+    "entities": [
+      [74, 77, "PARTY"],
+      [137, 140, "PARTY"]
+    ]
+  },
+  {
+    "text": "Bank agrees to execute and deliver to ISO such assignment documents as reasonably requested and required by ISO to vest such collection loss(es) recovery right to ISO and as reasonably required in connection with such collection recovery activities.",
+    "entities": [
+      [0, 4, "PARTY"],
+      [38, 41, "PARTY"],
+      [108, 111, "PARTY"],
+      [163, 166, "PARTY"]
+    ]
+  },
+  {
+    "text": "SECTION 7 REPRESENTATIONS AND WARRANTIES OF ISO ISO represents and warrants to SERVICERS that, as of the date of this Agreement, the following are true and correct: 7.1 Organization and Good Standing.",
+    "entities": [
+      [0, 9, "SECTION"],
+      [44, 51, "PARTY"],
+      [79, 88, "PARTY"],
+      [113, 127, "AGREEMENT"],
+      [165, 168, "SECTION"]
+    ]
+  },
+  {
+    "text": "ISO is a Delaware corporation duly organized, validly existing and in good standing under the laws of the State of Delaware and has full corporate power and authority to carry on its business as it is now being conducted.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "ISO is and will be qualified as a foreign corporation in good standing under the laws of each jurisdiction in which the conduct of its business or the ownership of its properties requires the qualification.",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "7.2 Execution and Effect of Agreement.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "ISO has the corporate power and authority to enter into this Agreement and the execution and delivery of this Agreement and the performance of ISO's obligations hereunder have been duly authorized by all necessary corporate action.",
+    "entities": [
+      [56, 70, "AGREEMENT"],
+      [105, 119, "AGREEMENT"],
+      [143, 146, "PARTY"]
+    ]
+  },
+  {
+    "text": "This Agreement has been duly executed and delivered by ISO and constitutes a legal, valid, and binding obligation of ISO, enforceable in accordance with its terms, subject to applicable bankruptcy, insolvency, reorganization, moratorium, and other laws affecting the rights of creditors generally.",
+    "entities": [
+      [55, 58, "PARTY"],
+      [117, 120, "PARTY"]
+    ]
+  },
+  {
+    "text": "7.3 Restrictions.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "Neither the execution and delivery of this Agreement nor the conduct of the Program contemplated hereby will:",
+    "entities": [[38, 52, "AGREEMENT"]]
+  },
+  {
+    "text": "(a) Violate any of the provisions of the charter or by-laws of ISO;",
+    "entities": [[63, 66, "PARTY"]]
+  },
+  {
+    "text": "or (b) Conflict with, or result in a breach of, or give rise to a right of termination of, or accelerate the performance required by the terms of any judgment, court order or consent decree, or any agreement, including a restrictive covenant or covenant against competition, indenture, mortgage, or instrument to which ISO is a party.",
+    "entities": [[319, 322, "PARTY"]]
+  },
+  {
+    "text": "or to which its property is subject, or constitute a default thereunder, except where the conflict, breach, right of termination, acceleration or default would not prevent or have a Material adverse effect on the conduct of the activities contemplated hereby.",
+    "entities": []
+  },
+  {
+    "text": "7.4 Consents.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "Except for filings, consents, waivers, approvals, and authorizations that the failure to obtain or make would not have a Material adverse effect on ISO or the Program, no filing, consent, waiver, approval, or authorization of any governmental authority or of any third party other than Visa and MasterCard, or notice to, or filing with, any governmental authority or any third party on the part of ISO is required in connection with the execution and delivery of this Agreement or the conduct of the activities contemplated hereby.",
+    "entities": [
+      [148, 151, "PARTY"],
+      [286, 290, "PARTY"],
+      [295, 305, "PARTY"],
+      [463, 477, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "7.5 Litigation.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "To the knowledge of ISO and except as disclosed in public filings with the Securities and Exchange Commission, there is no action at law or in equity, arbitration, proceeding, or governmental investigation pending, or to the knowledge of ISO threatened, by or before any court, any governmental or administrative agency or commission, or arbitrator, against ISO regarding this Agreement or any of the transactions contemplated hereby that could reasonably be expected to prevent or have a Material adverse effect on the conduct of the activities contemplated hereby.",
+    "entities": [
+      [20, 23, "PARTY"],
+      [71, 109, "PARTY"],
+      [238, 241, "PARTY"],
+      [372, 386, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "SECTION 8 ADDITIONAL COVENANTS 8.1 Reserve Account.",
+    "entities": [
+      [0, 9, "SECTION"],
+      [31, 34, "SECTION"]
+    ]
+  },
+  {
+    "text": "(a) ISO expressly authorizes SERVICERS to establish a Reserve Account pursuant to the terms and conditions set forth in this Section 8.1.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [29, 38, "PARTY"],
+      [125, 136, "SECTION"]
+    ]
+  },
+  {
+    "text": "The initial amount of such Reserve Account shall be .",
+    "entities": []
+  },
+  {
+    "text": "In addition, the amount of the Reserve Account may be increased by SERVICERS from time to time based upon any reasonably anticipated risk of loss to SERVICERS, material breach of the Agreement by ISO, or any material adverse change in the financial condition of ISO.",
+    "entities": [
+      [67, 76, "PARTY"],
+      [149, 158, "PARTY"],
+      [179, 192, "AGREEMENT"],
+      [196, 199, "PARTY"],
+      [262, 265, "PARTY"]
+    ]
+  },
+  {
+    "text": "Such Reserve Account shall be established and maintained at Bank.",
+    "entities": [[60, 64, "PARTY"]]
+  },
+  {
+    "text": "(b) The Reserve Account shall be fully funded upon five (5) Business Days' notice to ISO.",
+    "entities": [
+      [51, 73, "DATE"],
+      [85, 88, "PARTY"]
+    ]
+  },
+  {
+    "text": "Such Reserve Account may be funded by all or any combination of the following:",
+    "entities": []
+  },
+  {
+    "text": "(i) one or more debits to the Offset Account or any other accounts of ISO held by Bank or any of its Affiliates;",
+    "entities": [
+      [70, 73, "PARTY"],
+      [82, 86, "PARTY"]
+    ]
+  },
+  {
+    "text": "(ii) one or more deductions or offsets to any payments otherwise due to ISO;",
+    "entities": [[72, 75, "PARTY"]]
+  },
+  {
+    "text": "or (iii) ISO's delivery to SERVICERS of a letter of credit issued by a bank acceptable to SERVICERS and in a form acceptable to SERVICERS.",
+    "entities": [
+      [9, 12, "PARTY"],
+      [27, 36, "PARTY"],
+      [71, 75, "PARTY"],
+      [90, 99, "PARTY"],
+      [128, 137, "PARTY"]
+    ]
+  },
+  {
+    "text": "*** Omitted pursuant to a confidential treatment request.",
+    "entities": []
+  },
+  {
+    "text": "The confidential portion has been filed separately with the SEC.",
+    "entities": [[60, 63, "PARTY"]]
+  },
+  {
+    "text": "(c) If ISO's funds in the Reserve Account are not sufficient to cover the chargebacks, adjustments, fees and other charges due to SERVICERS from ISO or Merchants, or if the funds in the Reserve Account have been released, ISO agrees to pay SERVICERS such sums within five (5) Business Days of any such request by SERVICERS.",
+    "entities": [
+      [7, 10, "PARTY"],
+      [130, 139, "PARTY"],
+      [145, 148, "PARTY"],
+      [222, 225, "PARTY"],
+      [240, 249, "PARTY"],
+      [267, 289, "DATE"],
+      [313, 322, "PARTY"]
+    ]
+  },
+  {
+    "text": "In the event of a failure by ISO to fund the Reserve Account, SERVICERS may fund such Reserve Account in any of the manners set forth above.",
+    "entities": [
+      [29, 32, "PARTY"],
+      [62, 71, "PARTY"]
+    ]
+  },
+  {
+    "text": "(d) To secure ISO's obligations to SERVICERS under this Agreement, ISO grants to SERVICERS a lien and security interest in and to any of ISO's funds in the Reserve Account or otherwise related to this Agreement now or hereafter in the possession of SERVICERS, whether now or hereafter due or to become due to ISO from SERVICERS.",
+    "entities": [
+      [14, 17, "PARTY"],
+      [51, 65, "AGREEMENT"],
+      [67, 70, "PARTY"],
+      [81, 90, "PARTY"],
+      [137, 140, "PARTY"],
+      [196, 210, "AGREEMENT"],
+      [249, 258, "PARTY"],
+      [309, 312, "PARTY"],
+      [318, 327, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO agrees to duly execute and deliver to SERVICERS such instruments and documents as SERVICERS may reasonably request to perfect and confirm the lien, security interest, right of setoff, recoupment and subordination set forth in this Agreement.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [42, 51, "PARTY"],
+      [86, 95, "PARTY"],
+      [230, 244, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "8.2 Inspection.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "ISO will, at any and all reasonable times, permit SERVICERS' employees, agents, attorneys, auditors, or bank regulators to inspect ISO's place of business to audit its operations for compliance with all Rules, laws, regulations, and directives of any governmental regulatory agency or Bank Card association, all at SERVICERS' expense.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [50, 59, "PARTY"],
+      [104, 108, "PARTY"],
+      [131, 134, "PARTY"],
+      [203, 208, "POLICY"],
+      [216, 227, "POLICY"],
+      [285, 289, "PARTY"],
+      [315, 324, "PARTY"]
+    ]
+  },
+  {
+    "text": "8.3 Cooperation.",
+    "entities": [[0, 3, "SECTION"]]
+  },
+  {
+    "text": "SERVICERS and ISO will each timely furnish to the other any and all information and materials that the other may, from time to time, reasonably request in connection with all matters contemplated by this Agreement.",
+    "entities": [
+      [0, 9, "PARTY"],
+      [14, 17, "PARTY"],
+      [199, 213, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "Each party also shall take the action as the other may, from time to time, reasonably request in order that the purposes of this Agreement will be fully accomplished.",
+    "entities": [[124, 138, "AGREEMENT"]]
+  },
+  {
+    "text": "and that all matters contemplated hereby will comply with all Rules or other applicable statutory, regulatory or other legal requirements.",
+    "entities": [[62, 67, "POLICY"]]
+  },
+  {
+    "text": "ISO shall promptly deliver to SERVICERS after receipt by ISO a copy of all non-routine notices or correspondence that it receives from MasterCard, Visa, or other networks or Bank Card associations, or any other third party, which in any way relates to any Merchant's or ISO's participation in MasterCard, Visa, and other networks or Bank Card associations under this Agreement.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [30, 39, "PARTY"],
+      [57, 60, "PARTY"],
+      [135, 145, "PARTY"],
+      [147, 151, "PARTY"],
+      [174, 178, "PARTY"],
+      [270, 273, "PARTY"],
+      [293, 303, "PARTY"],
+      [305, 309, "PARTY"],
+      [362, 376, "AGREEMENT"]
+    ]
+  },
+  {
+    "text": "8.4 Compliance With Rules.",
+    "entities": [
+      [0, 3, "SECTION"],
+      [20, 25, "POLICY"]
+    ]
+  },
+  {
+    "text": "ISO also covenants to the following:",
+    "entities": [[0, 3, "PARTY"]]
+  },
+  {
+    "text": "(a) ISO will obtain copies of all available Rules from Visa and MasterCard and any other Bank Card association that makes its Rules available to ISOs.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [44, 49, "POLICY"],
+      [55, 59, "PARTY"],
+      [64, 74, "PARTY"],
+      [89, 93, "PARTY"],
+      [126, 131, "POLICY"],
+      [145, 149, "PARTY"]
+    ]
+  },
+  {
+    "text": "For all Rules not reasonably available to ISO, SERVICERS will provide ISO with information regarding such Rules and compliance therewith.",
+    "entities": [
+      [8, 13, "POLICY"],
+      [42, 45, "PARTY"],
+      [47, 56, "PARTY"],
+      [70, 73, "PARTY"],
+      [106, 111, "POLICY"]
+    ]
+  },
+  {
+    "text": "ISO understands and agrees to comply fully with all Rules and applicable laws and regulations.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [52, 57, "POLICY"],
+      [82, 93, "POLICY"]
+    ]
+  },
+  {
+    "text": "(b) On an ongoing basis, ISO will regularly provide SERVICERS with the current addresses for all its offices.",
+    "entities": [
+      [25, 28, "PARTY"],
+      [52, 61, "PARTY"]
+    ]
+  },
+  {
+    "text": "(c) In the event of any inconsistency between any provision of this Agreement and the Rules, the Rules in each instance shall be afforded precedence and shall apply.",
+    "entities": [
+      [63, 77, "AGREEMENT"],
+      [86, 91, "POLICY"],
+      [97, 102, "POLICY"]
+    ]
+  },
+  {
+    "text": "(d) ISO acknowledges and agrees that Visa and/or MasterCard are the sole and exclusive owner of Visa and/or MasterCard marks.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [37, 41, "PARTY"],
+      [49, 59, "PARTY"],
+      [96, 100, "PARTY"],
+      [108, 118, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO agrees to never contest the ownership of these marks and Visa and/or MasterCard may at any time immediately and without advance notice prohibit ISO from using their respective marks.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [61, 65, "PARTY"],
+      [73, 83, "PARTY"],
+      [148, 151, "PARTY"]
+    ]
+  },
+  {
+    "text": "(e) ISO acknowledges and agrees that Visa and/or MasterCard shall have the right, either in law or in equity, to enforce any provision of the Rules and to prohibit ISO's conduct that creates a risk of injury to Visa and/or MasterCard.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [37, 41, "PARTY"],
+      [49, 59, "PARTY"],
+      [142, 147, "POLICY"],
+      [164, 167, "PARTY"],
+      [211, 215, "PARTY"],
+      [223, 233, "PARTY"]
+    ]
+  },
+  {
+    "text": "or that may adversely affect the integrity of Visa's and/or MasterCard's systems, information or both.",
+    "entities": [
+      [46, 50, "PARTY"],
+      [60, 70, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO agrees to refrain from taking any action that would have the effect of interfering with or preventing an exercise of these rights by Visa and/or MasterCard.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [137, 141, "PARTY"],
+      [149, 159, "PARTY"]
+    ]
+  },
+  {
+    "text": "(f) ISO agrees not to use any marks of Visa and/or MasterCard on its own behalf in the furtherance of the Program.",
+    "entities": [
+      [4, 7, "PARTY"],
+      [39, 43, "PARTY"],
+      [51, 61, "PARTY"]
+    ]
+  },
+  {
+    "text": "ISO also agrees not to suggest, imply or in any manner create an impression that it is a Member or an authorized representative of Visa and/or MasterCard.",
+    "entities": [
+      [0, 3, "PARTY"],
+      [131, 135, "PARTY"],
+      [143, 153, "PARTY"]
+    ]
+  },
+  {
+    "text": "or that it is other than an independent sales organization or member service provider for a Member.",
+    "entities": []
+  },
+  {
+    "text": "Further, ISO may not create an impression that Visa and/or MasterCard in any way endorses ISO or the Program it coordinates through SERVICERS.",
+    "entities": [
+      [9, 12, "PARTY"],
+      [47, 51, "PARTY"],
+      [59, 69, "PARTY"],
+      [90, 93, "PARTY"],
+      [132, 141, "PARTY"]
+    ]
+  },
+  {
+    "text": "(g) ISO may use one or more of Visa's or MasterCard's marks under the following conditions:",
+    "entities": [
+      [4, 7, "PARTY"],
+      [31, 35, "PARTY"],
+      [41, 51, "PARTY"]
+    ]
+  }
+]

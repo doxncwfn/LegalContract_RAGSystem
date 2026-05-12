@@ -214,6 +214,7 @@
 \part*{Abstract}
 \clearpage
 \part{Processing and Syntax Analysis}
+\label{assignment_1}
 \section{Dataset Overview}
 \subsection*{Dataset Selection \& Justification}
 For this project, the primary data source is the \href{https://www.kaggle.com/datasets/konradb/atticus-open-contract-dataset-aok-beta}{\textbf{Atticus Open Contract Dataset (CUAD)}}. CUAD is a specialized, expert-annotated corpus containing 510 commercial legal contracts. It was created specifically to benchmark Natural Language Processing (NLP) models in the legal domain and provides a highly authoritative collection of unstructured contract text.
@@ -230,16 +231,16 @@ The selected evaluation documents provide intentionally diverse linguistic chall
         \textbf{Syntactic Complexity for Clause Splitting} (\result{Section~\ref{task_1.1}}): This contract contains multi-tiered definitions and elaborate termination provisions. It is designed to rigorously evaluate the dependency-aware clause segmenter, particularly its handling of subordinating conjunctions and intricate legal enumerations without fragmenting semantic units.
   \item \textbf{Distributor Agreement}\\
         (\textit{Wireless Links Inc. and Jaguar Investments, Inc.})\\
-        \textbf{Technical Density for Noun Phrase Chunking (Task 1.2):} This document is rich in technical multi-word noun phrases such as ``G3001 GPSLink mobile terminal'' and ``MidLink Middleware software.'' These serve as an exacting test for the IOB tagging procedure required for accurate noun phrase chunking.
+        \textbf{Technical Density for Noun Phrase Chunking} (\result{Section~\ref{task_1.2}}): This document is rich in technical multi-word noun phrases such as ``G3001 GPSLink mobile terminal'' and ``MidLink Middleware software.'' These serve as an exacting test for the IOB tagging procedure required for accurate noun phrase chunking.
   \item \textbf{Software License and Maintenance Agreement}\\
         (\textit{SFG Financial Corp. and 551 FX IB Associates, LLC})\\
-        \textbf{Feature-Rich Entities for Custom NER (Task 2.1):} This contract includes a high frequency of intricate numerical and temporal entities—such as precise monetary amounts (\$63,309), variable rates (``15\% rebate,'' ``tier-based pricing''), and deadlines. These features ensure the NER model is evaluated on a wide array of entity formats.
+        \textbf{Feature-Rich Entities for Custom NER} (\result{Section~\ref{task_2.1}}): This contract includes a high frequency of intricate numerical and temporal entities -- such as precise monetary amounts (\$63,309), variable rates (``15\% rebate,'' ``tier-based pricing''), and deadlines. These features ensure the NER model is evaluated on a wide array of entity formats.
 \end{itemize}
 
 \noindent Additionally, all three selected contracts provide:
 \begin{itemize}
-  \item \textbf{Explicit Intents for Classification (Task 2.3):} Clear examples of contractual Obligations (``shall pay''), Prohibitions (``shall not disclose''), and Rights (``reserves the right to''), yielding an unambiguous ground truth for TF-IDF and transformer-based intent classifiers.
-  \item \textbf{Structural Depth for RAG Implementation (Assignment 3):} Extensive appendices, schedules, and cross-referenced sections offer a realistic test bed for Retrieval-Augmented Generation, requiring high-precision retrieval of specific fee schedules and penalty stipulations.
+  \item \textbf{Explicit Intents for Classification} (\result{Section~\ref{task_2.3}}): Clear examples of contractual Obligations (``shall pay''), Prohibitions (``shall not disclose''), and Rights (``reserves the right to''), yielding an unambiguous ground truth for TF-IDF and transformer-based intent classifiers.
+  \item \textbf{Structural Depth for RAG Implementation} (\result{Assignment~\ref{assignment_3}}): Extensive appendices, schedules, and cross-referenced sections offer a realistic test bed for Retrieval-Augmented Generation, requiring high-precision retrieval of specific fee schedules and penalty stipulations.
 \end{itemize}
 
 This deliberately engineered subset, spanning a spectrum of commercial contract types and linguistic features, ensures comprehensive evaluation of clause segmentation, NER, classification, and retrieval capabilities.
@@ -400,7 +401,7 @@ To address this, the algorithm explicitly defines the semicolon as a hard clause
   \item or (iii) ISO's delivery of a letter of credit.
 \end{enumerate}
 
-By splitting explicitly at semicolons, the algorithm preserves the semantic independence of each list item. This is critical for Task 2.3 (Intent Classification), as it allows the classifier to evaluate each condition individually rather than attempting to classify a convoluted block of text.
+By splitting explicitly at semicolons, the algorithm preserves the semantic independence of each list item. This is critical for Intent Classification task (\result{Section~\ref{task_2.3}}), as it allows the classifier to evaluate each condition individually rather than attempting to classify a convoluted block of text.
 
 \subsubsection*{Syntactic Dependency Rules}
 For complex sentences where punctuation is insufficient or ambiguous (such as clauses connected by ``and'', ``or'', or ``but''), the algorithm leverages dependency parsing to determine if a split is syntactically valid. Simply splitting at every coordinating conjunction (\verb|cc|) results in severe over-splitting, destroying compound adjectives or compound predicates (e.g., splitting ``Approval will not be withheld or delayed'' into two meaningless fragments).
@@ -419,7 +420,7 @@ To prevent this, a strict \textbf{``New Subject'' Heuristic} was implemented. Th
 Example of the heuristic in action:
 
 \begin{quote}
-  ``In the event a Merchant refuses to consent, ISO will notify SERVICERS, and Bank will have the right to terminate its sponsorship.''
+  ``\textit{In the event a Merchant refuses to consent, ISO will notify SERVICERS, and Bank will have the right to terminate its sponsorship.}''
 \end{quote}
 
 The parser detects the conjunction ``and'', identifies ``will notify'' and ``will have'' as the two connected verbs, and verifies that ``Bank'' is the explicit subject of the second verb. Because a new subject is present, it is a truly independent clause, and the algorithm safely cleanly severs the string before the conjunction.
@@ -513,7 +514,7 @@ As evidenced by the IDE line numbers in \result{Figure~\ref{clause_output}}, eac
 
 \begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
   \item \textbf{Governing Clause Isolation:} The algorithm correctly applied Rule 2 (Look-Ahead) at Section 10.3. It identified the colon after ``as follows:" and severed the string before the start of the enumeration~(a).
-  \item \textbf{Semantic Independence:} By isolating the governing intent (``ISO may terminate...'') from the specific triggers, the pipeline ensures the Intent Classifier (Task 2.3) can distinguish between a ``Right'' and its ``Conditions''.
+  \item \textbf{Semantic Independence:} By isolating the governing intent (``ISO may terminate...'') from the specific triggers, the pipeline ensures the Intent Classifier (\result{Section~\ref{task_2.3}}) can distinguish between a ``Right'' and its ``Conditions''.
 \end{itemize}
 
 \subsubsection*{2.5.2 Handling Deep Enumerations}
@@ -536,7 +537,7 @@ Through these results, the system demonstrates that it can navigate the dense fo
 
 \section{Noun Phrase Chunking}
 \label{task_1.2}
-Following the isolation of semantically independent clauses in Task~1.1 (\result{Section~\ref{task_1.1}}), the next critical phase in the NLP extraction pipeline is \textbf{Noun Phrase (NP) Chunking}. The primary objective of this task is to identify and extract non-recursive noun phrases from the segmented text, representing their boundaries using the standard \textbf{Inside-Outside-Beginning (IOB)} tagging schema.
+Following the isolation of semantically independent clauses in \result{Section~\ref{task_1.1}}, the next critical phase in the NLP extraction pipeline is \textbf{Noun Phrase (NP) Chunking}. The primary objective of this task is to identify and extract non-recursive noun phrases from the segmented text, representing their boundaries using the standard \textbf{Inside-Outside-Beginning (IOB)} tagging schema.
 
 \subsection{The Linguistic Challenge in Legal Text}
 In general domain text, entities are often single words or simple bigrams (e.g., ``the company''). However, \textbf{commercial contracts exhibit extreme technical density}, making entity extraction significantly more complex. As highlighted in the dataset overview, documents such as the Distributor Agreement frequently contain entities realized as complex, multi-word syntactic constituents -- for example, ``G3001 GPSLink mobile terminal'' or ``MidLink Middleware software.''
@@ -544,10 +545,10 @@ In general domain text, entities are often single words or simple bigrams (e.g.,
 If an NLP parser fails to recognize these multi-word strings as a single noun phrase, it will fracture the entity. For example, a naive parser might tag ``mobile'' as an adjective and ``terminal'' as a noun, losing the fact that the entire four-word string represents a single, indivisible hardware product governed by the contract.
 
 \subsubsection*{Strategic Importance to the Pipeline}
-Noun Phrase Chunking is not merely a formatting exercise; it is a foundational prerequisite for the advanced machine learning objectives in Assignment~2:
+Noun Phrase Chunking is not merely a formatting exercise; it is a foundational prerequisite for the advanced machine learning objectives in \result{Assignment~\ref{assignment_2}}:
 \begin{itemize}
-  \item \textbf{Semantic Boundary Definition (Task 2.1: NER):} By grouping determiners, adjectives, and nouns into a single chunk, the algorithm establishes the exact token boundaries required to train a \textit{Custom Named Entity Recognition} model on intricate entities (e.g., complex product names, precise numerical and temporal phrases).
-  \item \textbf{Contextualizing Obligations (Task 2.3: Intent Classification):} While Clause Splitting (Task 1.1) isolates what the contractual rule is (the predicate), Noun Phrase Chunking isolates the \textit{actors} and \textit{objects} involved. It identifies who is obligated (e.g., ``SERVICERS'') and what specific object or payment is being acted upon (e.g., ``Net Program Participation Fees'').
+  \item \textbf{Semantic Boundary Definition} (\result{Section~\ref{task_2.1}}): By grouping determiners, adjectives, and nouns into a single chunk, the algorithm establishes the exact token boundaries required to train a \textit{Custom Named Entity Recognition} model on intricate entities (e.g., complex product names, precise numerical and temporal phrases).
+  \item \textbf{Contextualizing Obligations} (\result{Section~\ref{task_2.3}}): While Clause Splitting (Task 1.1) isolates what the contractual rule is (the predicate), Noun Phrase Chunking isolates the \textit{actors} and \textit{objects} involved. It identifies who is obligated (e.g., ``SERVICERS'') and what specific object or payment is being acted upon (e.g., ``Net Program Participation Fees'').
 \end{itemize}
 By accurately mapping these phrases into the \texttt{Token~\textbackslash t~Tag} tabular format required by the problem specification, the pipeline effectively transforms unstructured linguistic text into discrete, machine-readable objects, ready for entity classification and downstream retrieval.
 \subsection{Methodology: The IOB Tagging Schema}
@@ -613,7 +614,7 @@ As evidenced by the output above, the parser successfully maps the entire phrase
 
 \begin{itemize}[topsep=1pt, itemsep=0pt, parsep=2pt]
   \item \textbf{Possessive Integrity:} The algorithm correctly identifies that the possessive suffixes (\texttt{'s}) are not independent tokens to be excluded, but rather integral modifiers linking the contracting parties (\texttt{Merchant}, \texttt{ISO}) to the target object (\texttt{participation}). Tagging them as I-NP ensures the ``Owner'' and ``Owned Object'' remain syntactically bound.
-  \item \textbf{Coordination Retention:} By tagging the conjunction \texttt{or} as I-NP, the pipeline avoids splitting the entity into two fragmented objects. This prevents \texttt{participation} from floating without its full ownership context, which is a vital prerequisite for accurately training the Named Entity Recognition model in Task~2.1.
+  \item \textbf{Coordination Retention:} By tagging the conjunction \texttt{or} as I-NP, the pipeline avoids splitting the entity into two fragmented objects. This prevents \texttt{participation} from floating without its full ownership context, which is a vital prerequisite for accurately training the Named Entity Recognition model in \result{Section~\ref{task_2.1}}.
 \end{itemize}
 
 \paragraph{Solving the ``Broken Chunk'' Problem}
@@ -624,6 +625,7 @@ Furthermore, the implementation guarantees strict sequence adherence through its
 By dynamically resetting the beginning tag after any excluded token, the algorithm ensures that every newly initiated noun phrase strictly begins with a B-NP. The transition from \texttt{participation} (I-NP) to \texttt{in} (O) and immediately to \texttt{MasterCard} (B-NP) proves that the extraction sequence is fully sanitized, resolving the broken chunk vulnerability and generating an artifact that is perfectly aligned with standard sequence-labeling requirements.
 
 \section{Dependency Analysis}
+\label{task_1.3}
 \subsection{Objective and Syntactic Mapping}
 The final component of the Assignment 1 NLP pipeline is \textbf{Dependency Analysis}. While Clause Splitting (\result{Section~\ref{task_1.1}}) isolated the semantic boundaries of the text and Noun Phrase Chunking (\result{Section~\ref{task_1.2}}) identified the specific entities involved, the objective of Dependency Analysis is to uncover the grammatical skeleton connecting them. This task extracts and maps the word-to-word \textit{head-dependent} relationships for every token within a given clause, creating a structured tree of syntactic dependencies.
 
@@ -640,21 +642,6 @@ This token-level syntactic mapping is not only a formal requirement of the proje
 
 \subsection{Methodology: The Universal Dependencies Framework}
 To programmatically extract the grammatical relationships within the segmented clauses, the pipeline utilizes the \textbf{Universal Dependencies (UD)} framework. UD is a standardized, cross-linguistic annotation schema that categorizes syntactic relationships between a ``head'' token and its syntactic ``dependents.''
-\subsubsection*{The Parsing Engine}
-The implementation leverages \textcolor{red}{spaCy}'s \texttt{en\_core\_web\_sm} model, which features a highly optimized, transition-based dependency parser. Unlike traditional constituency parsing -- which breaks sentences into nested phrase brackets -- transition-based dependency parsing establishes direct, directed arcs between individual words. During execution, the parser analyzes the topological structure of the clause and assigns a specific syntactic dependency label to every token. Key labels crucial for legal text analysis include:
-\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
-  \item \textbf{ROOT}: The primary predicate or main verb of the clause (e.g., ``terminate'', ``warrant'', ``pay''). All other words in the sentence ultimately trace their dependency back to this root.
-  \item \textbf{nsubj} / \textbf{nsubjpass}: The nominal subject (or passive subject) performing the action, which usually identifies the obligated or acting party (e.g., ``ISO'', ``SERVICERS'').
-  \item \textbf{dobj} / \textbf{pobj}: The direct object of a verb or the object of a preposition, typically identifying the target of an action or rule (e.g., ``Agreement'', ``fees'').
-  \item \textbf{amod}: Adjectival modifiers that define the exact scope of legal entities (e.g., ``prior'' and ``written'' modifying ``notice'').
-\end{itemize}
-
-\subsubsection*{Handling Legal Modifiers and Complexity}
-Commercial contracts are characterized by extreme syntactic depth, heavily relying on chained prepositional phrases and clausal complements (e.g., ``in accordance with the terms of this Agreement'').
-
-\medskip
-
-The dependency-based methodology excels in this environment because it systematically decomposes these chains without losing the governing logic. The parser links prepositions (\texttt{prep}) to their governing verbs or nouns, and then maps them to their subsequent prepositional objects (\texttt{pobj}). By mapping these relationships as a directed graph, the pipeline ensures that subordinate conditions and complex legal modifiers do not break the analytical chain. This allows the system to trace a complete syntactic pathway from a deep modifier all the way back to the governing \texttt{ROOT} verb, capturing the full structural reality of the clause.
 \begin{algorithm}[H]
   \footnotesize
   \caption{Syntactic Dependency Extraction and JSON Serialization}
@@ -685,6 +672,22 @@ The dependency-based methodology excels in this environment because it systemati
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}
+
+\subsubsection*{The Parsing Engine}
+The implementation leverages \textcolor{red}{spaCy}'s \texttt{en\_core\_web\_sm} model, which features a highly optimized, transition-based dependency parser. Unlike traditional constituency parsing -- which breaks sentences into nested phrase brackets -- transition-based dependency parsing establishes direct, directed arcs between individual words. During execution, the parser analyzes the topological structure of the clause and assigns a specific syntactic dependency label to every token. Key labels crucial for legal text analysis include:
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{ROOT}: The primary predicate or main verb of the clause (e.g., ``terminate'', ``warrant'', ``pay''). All other words in the sentence ultimately trace their dependency back to this root.
+  \item \textbf{nsubj} / \textbf{nsubjpass}: The nominal subject (or passive subject) performing the action, which usually identifies the obligated or acting party (e.g., ``ISO'', ``SERVICERS'').
+  \item \textbf{dobj} / \textbf{pobj}: The direct object of a verb or the object of a preposition, typically identifying the target of an action or rule (e.g., ``Agreement'', ``fees'').
+  \item \textbf{amod}: Adjectival modifiers that define the exact scope of legal entities (e.g., ``prior'' and ``written'' modifying ``notice'').
+\end{itemize}
+
+\subsubsection*{Handling Legal Modifiers and Complexity}
+Commercial contracts are characterized by extreme syntactic depth, heavily relying on chained prepositional phrases and clausal complements (e.g., ``in accordance with the terms of this Agreement'').
+
+\medskip
+
+The dependency-based methodology excels in this environment because it systematically decomposes these chains without losing the governing logic. The parser links prepositions (\texttt{prep}) to their governing verbs or nouns, and then maps them to their subsequent prepositional objects (\texttt{pobj}). By mapping these relationships as a directed graph, the pipeline ensures that subordinate conditions and complex legal modifiers do not break the analytical chain. This allows the system to trace a complete syntactic pathway from a deep modifier all the way back to the governing \texttt{ROOT} verb, capturing the full structural reality of the clause.
 \subsection{Data Representation and JSON Schema}
 To transform the directed acyclic graph (DAG) generated by the dependency parser into a serializable format, the system implements a mapping function that iterates through the parsed text. Each token is converted into a structured entry within a JSON array, ensuring that the syntactic hierarchy is preserved through explicitly defined \texttt{Head} pointers.
 
@@ -696,16 +699,16 @@ To transform the directed acyclic graph (DAG) generated by the dependency parser
 \end{itemize}
 
 \subsubsection*{Output Structure}
-The final output aggregates this information into a nested JSON array, where each entry contains a segmented clause and a list of its token-level dependency mappings:
-\begin{minted}[frame=lines, fontsize=\scriptsize, breaklines]{json}
+The final output aggregates this information into a nested JSON array, where each entry contains a segmented clause and a list of its token-level dependency mappings:\clearpage
+\begin{minted}[fontsize=\footnotesize, breaklines]{json}
 {
   "Clause": "ISO may terminate this Agreement",
   "Dependencies": [
-    { "Token": "ISO",       "Head": "terminate",   "Dependency": "nsubj" },
-    { "Token": "may",       "Head": "terminate",   "Dependency": "aux"   },
-    { "Token": "terminate", "Head": "terminate",   "Dependency": "ROOT"  },
-    { "Token": "this",      "Head": "Agreement",   "Dependency": "det"   },
-    { "Token": "Agreement", "Head": "terminate",   "Dependency": "dobj"  }
+    { "Token": "ISO",       "Head": "terminate", "Dependency": "nsubj" },
+    { "Token": "may",       "Head": "terminate", "Dependency": "aux"   },
+    { "Token": "terminate", "Head": "terminate", "Dependency": "ROOT"  },
+    { "Token": "this",      "Head": "Agreement", "Dependency": "det"   },
+    { "Token": "Agreement", "Head": "terminate", "Dependency": "dobj"  }
   ]
 }
 \end{minted}
@@ -714,47 +717,530 @@ This dictionary-based representation fulfills the data formatting requirements a
 
 \subsection{Technical Evaluation}
 The evaluation of the Dependency Analysis module focuses on two primary metrics: \textbf{syntactic fidelity} in complex legal sentences and \textbf{strict compliance} with the required JSON data schema.
-\begin{minted}[frame=lines, fontsize=\scriptsize, breaklines]{json}
+
+\subsubsection*{Syntactic Fidelity and Structural Accuracy}
+The dependency serialization is illustrated below with this sample output, parsed from ``The confidential portion has been filed separately with the SEC.'':
+\begin{minted}[fontsize=\footnotesize, breaklines]{json}
 {
   "Clause": "The confidential portion has been filed separately with the SEC.",
   "Dependencies": [
-      { "Token":      "The",         "Head":      "portion",    "Dependency": "det"        },
-      { "Token":      "confidential","Head":      "portion",    "Dependency": "amod"       },
-      { "Token":      "portion",     "Head":      "filed",      "Dependency": "nsubjpass"  },
-      { "Token":      "has",         "Head":      "filed",      "Dependency": "aux"        },
-      { "Token":      "been",        "Head":      "filed",      "Dependency": "auxpass"    },
-      { "Token":      "filed",       "Head":      "filed",      "Dependency": "ROOT"       },
-      { "Token":      "separately",  "Head":      "filed",      "Dependency": "advmod"     },
-      { "Token":      "with",        "Head":      "filed",      "Dependency": "prep"       },
-      { "Token":      "the",         "Head":      "SEC",        "Dependency": "det"        },
-      { "Token":      "SEC",         "Head":      "with",       "Dependency": "pobj"       },
-      { "Token":      ".",           "Head":      "filed",      "Dependency": "punct"      }
+      { "Token": "The",          "Head": "portion", "Dependency": "det"        },
+      { "Token": "confidential", "Head": "portion", "Dependency": "amod"       },
+      { "Token": "portion",      "Head": "filed",   "Dependency": "nsubjpass"  },
+      { "Token": "has",          "Head": "filed",   "Dependency": "aux"        },
+      { "Token": "been",         "Head": "filed",   "Dependency": "auxpass"    },
+      { "Token": "filed",        "Head": "filed",   "Dependency": "ROOT"       },
+      { "Token": "separately",   "Head": "filed",   "Dependency": "advmod"     },
+      { "Token": "with",         "Head": "filed",   "Dependency": "prep"       },
+      { "Token": "the",          "Head": "SEC",     "Dependency": "det"        },
+      { "Token": "SEC",          "Head": "with",    "Dependency": "pobj"       },
+      { "Token": ".",            "Head": "filed",   "Dependency": "punct"      }
   ]
 }
 \end{minted}
-\subsubsection*{Syntactic Fidelity and Structural Accuracy}
-Using the Sponsorship Agreement as a structural baseline, the parser correctly identifies the relational triad of actors, actions, and objects. In the parsed clause ``ISO may terminate this Agreement,'' the algorithm successfully designates \texttt{terminate} as the grammatical \texttt{ROOT}.
 
+\indent This output demonstrates how the parser preserves the grammatical architecture of a legal clause:
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt, label=--]
+  \item \textbf{\texttt{det}:} ``The'' is a determiner for ``portion''.
+  \item \textbf{\texttt{amod}:} ``confidential'' is an adjectival modifier of ``portion''.
+  \item \textbf{\texttt{nsubjpass}:} ``portion'' is identified as the passive subject of ``filed''.
+  \item \textbf{\texttt{aux}/\texttt{auxpass}:} ``has'' and ``been'' are auxiliary elements of the passive construction.
+  \item \textbf{\texttt{ROOT}:} ``filed'' is marked as the root verb of the sentence.
+  \item \textbf{\texttt{advmod}:} ``separately'' acts as an adverbial modifier of ``filed''.
+  \item \textbf{\texttt{prep}:} ``with'' introduces the prepositional phrase attached to ``filed''.
+  \item \textbf{\texttt{det}:} ``the'' determines ``SEC'' within the prepositional object.
+  \item \textbf{\texttt{pobj}:} ``SEC'' is the object of the preposition ``with''.
+  \item \textbf{\texttt{punct}:} ``.'' is recognized as punctuation attached to the root.
+\end{itemize}
 \medskip
 
-The dependency tree accurately maps the surrounding entities to this core predicate:
-
-\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
-  \item \textbf{Nominal Subject (nsubj):} ``ISO'' is correctly identified as the acting party and assigned ``terminate'' as its syntactic head.
-  \item \textbf{Direct Object (dobj):} ``Agreement'' is correctly identified as the target of the action, also pointing directly to the root verb.
-  \item \textbf{Determiner (det):} The modifier ``this'' is correctly attached to its local head (``Agreement'') rather than floating independently.
-\end{itemize}
-
-This proves that the transition-based parser reliably captures the core intent of a legal clause. By anchoring the acting party and the target object to the predicate, the system preserves the legal logic even when clauses are inverted or padded with complex modifiers.
+By providing each clause and its full dependency breakdown in this machine-readable JSON structure, the parser enables high-precision syntactic and semantic analysis suitable for contract understanding and automation.
 
 \subsubsection*{Schema Compliance and Noise Robustness}
 The serialization module proved highly robust when converting the topological graph into the required flat JSON format. Every valid token is successfully mapped to the \texttt{Token}, \texttt{Head}, and \texttt{Dependency} keys without any data loss. Crucially, the implementation of the whitespace filtering heuristic effectively neutralized OCR layout artifacts. By enforcing a strict strip check before appending to the dictionary, stray newline characters, tab indents, and non-breaking spaces from the raw CUAD data were completely excluded from the final syntactic dataset.
 
 \medskip
 
-The resulting JSON arrays provide a pristine, machine-readable foundation. This output strictly fulfills the final structural requirement of Task 1, cleanly concluding the Processing and Syntax Analysis phase and preparing the text pipeline for the Machine Learning and Classification objectives in Assignment 2.
+The resulting JSON arrays provide a pristine, machine-readable foundation. This output strictly fulfills the final structural requirement discussed in \result{Section~\ref{task_1.1}}, cleanly concluding the Processing and Syntax Analysis phase and preparing the text pipeline for the Machine Learning and Classification objectives in \result{Assignment~\ref{assignment_2}}.
+
+\newpage\part{Information Extraction \& Semantic Analysis}
+\label{assignment_2}
+\section{Custom Named Entity Recognition}
+\label{task_2.1}
+General-purpose Named Entity Recognition (NER) systems are highly effective for standard natural language but consistently underperform when applied to the dense, idiosyncratic domain of legal contracts. Standard NER models frequently fragment long corporate names, fail to distinguish between generic organizations and legally bound parties, and lack the domain-specific vocabulary to identify critical structural references (e.g., internal sections, exhibits, or governing policies). In complex documents, this lack of syntactic and semantic precision prevents the accurate extraction of ``who does what,'' rendering the data unusable for downstream automated reasoning or Question Answering (QA) tasks.
+\subsubsection*{Objective}
+The primary objective of this task is to develop a domain-specific NER pipeline by fine-tuning a pre-trained language model (\verb|en\_core\_web\_md| via spaCy). This pipeline transforms unstructured legal clauses into structured, machine-readable representations by accurately identifying and extracting contract-specific entities.
+
+\subsection{Custom Schema Engineering and Justification}
+The project specification notes that the entity schema ``may include (but is not limited to)'' financial and penal variables such as \texttt{MONEY}, \texttt{RATE}, and \texttt{PENALTY}. However, an exploratory analysis of the specific corpus selected for this task -- a complex Sponsorship Agreement involving multiple corporate entities -- revealed that financial variables were too sparse to generate a robust training signal. Attempting to force the model to learn these sparse variables resulted in severe hallucinations and misclassification of standard text.
+
+\medskip
+
+Therefore, to maximize extraction precision and align with the actual semantic reality of the selected contract, a highly tailored custom schema was engineered. The document's core logic relies heavily on policy adherence, structural cross-referencing, and party obligations rather than transactional financial penalties. The final schema is defined as follows:
+
+\begin{description}[leftmargin=3.5cm, style=nextline]
+  \item[PARTY:] Any legally defined company, organization, or role. These are strictly modeled as continuous spans to prevent entity fragmentation.
+  \item[AGREEMENT:] Explicit references to governing documents.
+  \item[SECTION:] Internal structural references necessary for tracing contractual logic.
+  \item[EXHIBIT:] External structural references, attachments, and schedules.
+  \item[DATE:] Timeframes, deadlines, and specific temporal milestones, including relative legal dates.
+  \item[POLICY:] Governing rules, standards, and guidelines that dictate party behavior and compliance.
+\end{description}
+
+\medskip
+
+By aligning the NER schema directly with the architectural reality of the specific contract, this pipeline prioritizes high-precision extraction of structural and relational entities, establishing a reliable data foundation for subsequent Semantic Role Labeling and intent classification.
+
+\subsection{Training Dataset Generation \& Preprocessing}
+\subsubsection{Data Sourcing and Annotation Strategy}
+The training dataset was constructed by manually extracting and annotating complex clauses from the core Sponsorship Agreement. To ensure the model learned precise entity boundaries without being confused by domain-specific noise, strict annotation guidelines were enforced:
+
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{Atomic Entity Spans:} Corporate entities and legal names were annotated as single, continuous spans -- for example, separating ``Wells Fargo Bank, N.A.'' from ``First Data Merchant Services Corporation'' rather than grouping them.
+  \item \textbf{Exclusion of Variable Noise:} Highly irregular contact information (such as physical addresses, zip codes, and facsimile numbers) were deliberately tagged as O (\textit{Outside}) to prevent the model from misclassifying them as \texttt{SECTION} or \texttt{PARTY} entities.
+\end{itemize}
+
+\subsubsection{Sample Annotations}
+The dataset was formatted into JSON dictionaries, mapping the raw text to character-level entity spans \texttt{[start, end, LABEL]}. Below are representative samples from the training data that illustrate the application of the custom schema:
+
+\paragraph{Sample 1: Temporal and Structural Logic}
+This sample demonstrates the model's training for identifying structural references and relative legal timeframes.
+\begin{minted}[fontsize=\footnotesize, breaklines]{json}
+{
+  "text": "Merchant agrees to comply with the Rules and the Merchant Processing Policy within ninety (90) days of the Effective Date.",
+  "entities": [
+    [0, 8, "PARTY"],    // Merchant
+    [35, 40, "POLICY"], // Rules
+    [49, 75, "POLICY"], // Merchant Processing Policy
+    [83, 99, "DATE"],   // within ninety (90) days
+    [107, 121, "DATE"]  // Effective Date
+  ]
+}
+\end{minted}
+
+\paragraph{Sample 2: Entity Boundary Control (The ``Address'' Limitation)}
+This sample illustrates the deliberate exclusion of address data. The model is trained to strictly stop the \texttt{PARTY} span at the end of the corporate name, completely ignoring the subsequent physical address and routing numbers to maintain high precision.
+
+\begin{minted}[fontsize=\footnotesize, breaklines]{json}
+{
+  "text": "If to FDMS: First Data Merchant Services Corporation 6902 Pine Street PS-11 Omaha, NE 68106 Attn: VP",
+  "entities": [
+    [6, 10, "PARTY"], // FDMS
+    [12, 52, "PARTY"] // First Data Merchant Services Corporation
+  ]
+}
+\end{minted}
+
+\paragraph{Sample 3: Agreement and Cross-Referencing}
+This sample trains the model to recognize internal cross-references and governing documents without absorbing surrounding grammatical modifiers (e.g., tagging ``Agreement'' instead of ``this Agreement'').
+
+\begin{minted}[fontsize=\footnotesize, breaklines]{json}
+{
+  "text": "Subject to Section 10.4, either party may terminate this Agreement immediately upon written notice.",
+  "entities": [
+    [11, 23, "SECTION"],  // Section 10.4
+    [57, 66, "AGREEMENT"] // this Agreement
+  ]
+}
+\end{minted}
+
+\subsubsection{Data Validation and Format Conversion}
+
+Standard deep learning pipelines require data to be rigorously formatted and token-aligned. The raw JSON dataset was preprocessed and converted into spaCy's highly optimized binary format (\texttt{DocBin}) using a custom Python script. During this preprocessing phase, two critical validation steps were executed:
+\begin{itemize}
+  \item \textbf{Schema Enforcement:} The script systematically filtered the incoming annotations against the strict target schema (\texttt{["PARTY", "AGREEMENT", "SECTION", "EXHIBIT", "DATE", "POLICY"]}). Any legacy or out-of-scope tags were automatically dropped to prevent polluting the training signal.
+  \item \textbf{Token Alignment Validation:} The \texttt{alignment\_mode="expand"} parameter was utilized during span creation. If a human annotator accidentally selected half a word (e.g., missing a trailing character), the preprocessor automatically expanded the boundary to encompass the nearest valid linguistic token, ensuring the neural network received mathematically clean inputs. Misaligned spans that could not be resolved were logged and skipped.
+\end{itemize}
+
+\begin{algorithm}[H]
+  \footnotesize
+  \caption{Legal Entity Preprocessing and Binary Serialization}
+  \begin{algorithmic}[1]
+    \Procedure{ConvertJSONToDocBin}{$\mathcal{D}_{json}, \mathcal{L}$}
+    \State $DocBin \gets$ \Call{InitializeDocBin}{}
+    \For{\textbf{each} $entry$ \textbf{in} $\mathcal{D}_{json}$}
+    \State $doc \gets \mathcal{M}.\text{make\_doc}(entry.\text{text})$ \Comment{Efficient tokenization}
+    \State $valid\_spans \gets [\ ]$
+    \For{\textbf{each} $(start, end, label)$ \textbf{in} $entry.\text{entities}$}
+    \If{$label \in \mathcal{L}$} \Comment{Schema validation}
+    \State $span \gets$ \Call{GetCharSpan}{$doc, start, end, label$}
+    \If{$span \neq \text{NULL}$} \Call{Append}{$valid\_spans, span$} \Comment{Alignment check}
+    \EndIf
+    \EndIf
+    \EndFor
+    \State $doc.ents \gets valid\_spans$ \Comment{Assign validated entities}
+    \State \Call{AddDocToBin}{$DocBin, doc$}
+    \EndFor
+    \State \Call{SaveToDisk}{$DocBin, \text{"train.spacy"}$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+\subsection{Model Architecture and Fine-Tuning Strategy}
+The pipeline leverages spaCy's \texttt{en\_core\_web\_md} as the foundational language model. This medium-sized English model was selected because it includes pre-trained static word vectors (GloVe), which provide a robust semantic understanding of standard English vocabulary. Building upon a model with existing vector representations is highly computationally efficient compared to training a transformer architecture from scratch, especially given the limited size of the custom annotated legal corpus.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{images/spacy.png}
+  \caption{spaCy's Architecture}
+  \label{spacy_architecture}
+\end{figure}
+
+\subsubsection*{Mitigating Catastrophic Forgetting (Weight Preservation)}
+During the initial implementation iterations, a critical architectural flaw was identified: initializing the model via standard training loops effectively randomized the underlying network weights, destroying the model's pre-existing knowledge of English syntax. This resulted in severe classification anomalies, such as predicting standard nouns as legal dates.
+
+\medskip
+
+To resolve this, the fine-tuning strategy was heavily modified. Instead of initializing a new model, the pipeline utilizes a \texttt{resume\_training()} protocol. This strategy locks the foundational language representations and only updates the weights of the NER output layer. By doing so, the model retains its baseline capacity to parse English grammar while simultaneously learning the new mathematical boundaries of the domain-specific schema (\texttt{PARTY}, \texttt{AGREEMENT}, etc.).
+
+\subsubsection*{Pipeline Component Freezing}
+A spaCy processing pipeline consists of multiple sequential components (e.g., \texttt{tok2vec}, \texttt{tagger}, \texttt{parser}, \texttt{attribute\_ruler}, \texttt{lemmatizer}). Because this task strictly targets Named Entity Recognition, backpropagating loss through the entire pipeline introduces unnecessary computational overhead and risks corrupting the syntactical parsing layers (which are required for the Dependency Analysis task in \result{Section~\ref{task_1.3}}).
+
+\begin{algorithm}[H]
+  \footnotesize
+  \caption{Domain-Specific NER Fine-Tuning and Optimization}
+  \begin{algorithmic}[1]
+    \Procedure{FineTuneNERModel}{$\mathcal{D}_{raw}, \mathcal{L}, E$}
+    \State $\mathcal{M} \leftarrow$ \Call{Load}{"en\_core\_web\_md"} \Comment{Load pre-trained model with word vectors}
+    \State $ner \leftarrow \mathcal{M}.\text{get\_pipe}(\text{"ner"})$
+    \For{\textbf{each} $label$ \textbf{in} $\mathcal{L}$} \Comment{Apply custom schema}
+    \State \Call{AddLabel}{$ner, label$}
+    \EndFor
+    \State $\mathcal{D}_{bin} \leftarrow$ \Call{PreprocessAndAlign}{$\mathcal{D}_{raw}, \mathcal{L}$} \Comment{Binary conversion and span alignment}
+    \State $Opt \leftarrow \mathcal{M}.\text{resume\_training}()$ \Comment{Preserve base language weights}
+    \State \Call{FreezePipes}{$\mathcal{M}, \text{except}=\text{"ner"}$} \Comment{Isolate gradients to NER head}
+    \For{$epoch \gets 1$ \textbf{to} $E$}
+    \State $\mathcal{D}_{shuffled} \gets$ \Call{Shuffle}{$\mathcal{D}_{bin}$}
+    \State $Batches \gets$ \Call{CreateCompoundingBatches}{$\mathcal{D}_{shuffled}, \text{start}=4, \text{end}=32$}
+    \For{\textbf{each} $batch$ \textbf{in} $Batches$}
+    \State $\mathcal{M}.\text{update}(batch, \text{optimizer}=Opt, \text{dropout}=0.3)$
+    \EndFor
+    \EndFor
+    \State \Call{SaveToDisk}{$\mathcal{M}, \text{"ner\_model"}$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+To isolate the training signal, all pipeline components other than the \texttt{ner} component were explicitly frozen (disabled) prior to the training loop. This ensures that gradient updates are applied exclusively to the entity recognition head.
+
+\subsubsection*{Training Dynamics and Hyperparameter Optimization}
+To ensure stable convergence and prevent overfitting on the small dataset, the training loop was optimized with the following hyperparameters and techniques:
+
+\begin{itemize}
+  \item \textbf{Dynamic Minibatching:} Updating weights after every single example (batch size of 1) produces highly erratic gradient trajectories. To stabilize learning, training examples were grouped using a compounding mini-batch strategy. The batch size starts at 4.0 and exponentially increases to 32.0 (using a 1.001 compounding rate), allowing the model to make granular adjustments early in training and broader generalizations in later epochs.
+  \item \textbf{Dropout Regularization:} A dropout rate of 0.3 (30\%) was applied during the updates. By randomly dropping network connections during training, the model is forced to learn redundant representations of the entities, preventing it from simply memorizing the training text.
+  \item \textbf{Epochs:} The model achieved optimal fine-tuning convergence within 30 to 40 epochs. Training beyond this threshold yielded diminishing returns on loss reduction and increased the risk of overfitting the specific corporate names present in the training set.
+\end{itemize}
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{python}
+with nlp.disable_pipes(*unaffected_pipes):
+  for epoch in range(EPOCHS):
+      random.shuffle(examples)
+      losses = {}
+      batches = minibatch(examples, size=compounding(4.0, 32.0, 1.001))
+      for batch in batches:
+          nlp.update(
+              batch,
+              drop=0.3,
+              losses=losses,
+              sgd=optimizer
+          )
+\end{minted}
+\subsection{Evaluation \& Results}
+Given the highly specific nature of the custom schema and the limited size of the annotated corpus, traditional quantitative metrics (such as Precision and Recall calculated over a large holdout set) were deprioritized in favor of rigorous \textbf{Qualitative Error Analysis}. The fine-tuned model's performance was evaluated by parsing complex, previously unseen clauses sampled directly from the contract text. Two principal criteria were used in this analysis:
+\begin{itemize}
+  \item \textbf{Entity Cohesion:} The model's ability to extract multi-token corporate names (and other non-atomic spans) as single, unified entities, rather than fragmenting them into subcomponents.
+  \item \textbf{Categorical Accuracy:} The strictness with which extracted entities adhered to the schema, particularly in distinguishing between legal actors, documents, temporal variables, and structural references.
+\end{itemize}
+
+\subsubsection*{Optimized Performance Analysis}
+The final pipeline, which leveraged weight preservation (\texttt{resume\_training()}) and dynamic compounding minibatches, successfully \textit{isolated the training signal} to the NER component. This architectural constraint allowed the model to retain general English syntactic parsing while learning contract-specific entity types and boundary logic. Below, we present representative output samples produced by the deployed inference pipeline (\texttt{predict\_ner.py}), demonstrating the model's precision and schema fidelity.
+
+\paragraph{Sample Analysis 1: Entity Cohesion \& Boundary Control}
+\textit{A critical objective of this task was to extract entire corporate entities (as annotated), while ignoring highly variable contact details (per annotation strategy).}
+
+\begin{quote}
+  \texttt{``If to Bank: Wells Fargo Bank, N.A. 1200 Montego Way Walnut Creek, CA 94598 Attn: EVP Merchant Card Services''}
+\end{quote}
+
+\begin{minted}[fontsize=\footnotesize]{json}
+{
+  "entities": [
+    { "text": "Bank",                   "label": "PARTY"   },
+    { "text": "Wells Fargo Bank, N.A.", "label": "PARTY"   }
+  ]
+}
+\end{minted}
+
+\noindent
+\textit{Engineering Impact:} The model robustly groups multi-token corporate names as single \texttt{PARTY} units, while the learned span logic successfully truncates at the address boundary (``1200 Montego Way...''), minimizing spurious extractions caused by noisy or irrelevant fields.
+
+\paragraph{Sample Analysis 2: Categorical Accuracy \& Structural Logic}
+\textit{The model must distinguish between discrete entity types -- governing documents, dates, structural sections, and actor parties -- within sentences containing multiple schema classes.}
+
+\begin{quote}
+  \texttt{``Subject to Section 10.4, Merchant agrees to comply with the Rules within ninety (90) days of the Effective Date.''}
+\end{quote}
+
+\begin{minted}[fontsize=\footnotesize]{json}
+{
+  "entities": [
+    { "text": "Section 10.4",     "label": "SECTION" },
+    { "text": "Merchant",         "label": "PARTY"   },
+    { "text": "Rules",            "label": "POLICY"  },
+    { "text": "ninety (90) days", "label": "DATE"    },
+    { "text": "Effective Date",   "label": "DATE"    }
+  ]
+}
+\end{minted}
+
+\noindent
+\textit{Engineering Impact:} This output illustrates full categorical coverage: the model distinguishes structural references (``Section 10.4''), legal actors (``Merchant''), policy names (``Rules''), and both absolute and relative dates. Such granularity enables downstream systems to compose complex logical queries and accurately map party obligations and deadlines.
+
+\subsubsection*{Performance Synthesis}
+
+In summary, the fine-tuned model resolves key extraction challenges in legal text by restricting its schema to high-value relational entities (\texttt{PARTY}, \texttt{AGREEMENT}, \texttt{SECTION}, \texttt{EXHIBIT}, \texttt{DATE}, \texttt{POLICY}). As a result, the NER output consists of concise, machine-readable JSON arrays, successfully mapping actors to their rules, documents, and temporal constraints. This clean structuring directly enables downstream tasks such as Semantic Role Labeling and Clause Intent Classification, paving the way for a contract-centric, explainable query engine.
+
+\subsection{Technical Limitations and Trade-offs}
+\subsubsection{Domain-Specific Noise and the ``Address'' Limitation}
+
+While the fine-tuned model demonstrates high precision on structural and relational entities, its primary technical limitation lies in processing highly variable, contact-specific data -- specifically physical addresses, routing numbers, and facsimile coordinates.
+
+\medskip
+
+Legal contracts often embed this information within densely packed ``Notices'' clauses. During the early iterations of model training, an attempt was made to force the NER model to categorize these strings. However, due to the extreme structural variance of addresses and the limited size of the custom annotated dataset, the model suffered from severe categorical hallucinations, attempting to force street names and zip codes into the existing schema.
+
+\paragraph{Example of Categorical Hallucination:}
+When confronted with a standard notice address, the model failed to recognize the boundary of the \texttt{PARTY} and began misclassifying the address components as temporal or structural markers.
+
+\begin{quote}
+  \texttt{``First Data Merchant Services Corporation 6902 Pine Street PS-11 Omaha, NE 68106''}
+\end{quote}
+
+\noindent
+\textbf{Failed Inference Output:}
+\begin{minted}[fontsize=\footnotesize]{json}
+{
+  "entities": [
+    { "text": "First Data Merchant Services Corporation", "label": "PARTY" },
+    { "text": "6902", "label": "DATE" },          // Mislabeled
+    { "text": "Pine Street", "label": "SECTION" } // Mislabeled
+  ]
+}
+\end{minted}
+
+\subsubsection{The Trade-off: Precision over Semantic Scope}
+
+To resolve this failure, a deliberate engineering trade-off was made: \textit{Precision was prioritized over Semantic Scope}. Rather than polluting the target schema with highly irregular \texttt{ADDRESS} or \texttt{FAX} labels -- which would require thousands of annotated examples to stabilize -- these entities were explicitly excluded from the training data (tagged as O / Outside). By enforcing strict span boundaries that stop immediately after the corporate name, the model was prevented from ``guessing'' labels for the subsequent contact noise.
+
+\medskip
+
+This trade-off means the current pipeline cannot extract routing or geographical data. However, this limitation is deemed acceptable because extracting the core legal actors (\texttt{PARTY}) and governing rules (\texttt{POLICY}, \texttt{DATE}) is vastly more critical for the downstream Semantic Role Labeling task than identifying a physical mailing address.
+
+\subsubsection{Future Work and Mitigation Strategy}
+
+Relying solely on a neural network to extract deterministic data (like zip codes or fax numbers) is computationally inefficient and prone to error. In future iterations, this limitation can be mitigated by transitioning from a monolithic NER model to a \textbf{Hybrid Extraction Pipeline}:
+
+\begin{itemize}
+  \item \textbf{Semantic Layer:} The fine-tuned Transformer model handles context-dependent legal variables (\texttt{PARTY}, \texttt{AGREEMENT}, \texttt{POLICY}).
+  \item \textbf{Deterministic Layer:} A secondary module utilizing Regular Expressions (Regex) processes the text post-inference to confidently extract highly patterned data, such as \verb|\d{3}-\d{3}-\d{4}| for facsimile numbers.
+\end{itemize}
+
+\section{Semantic Role Labeling}
+\label{task_2.2}
 
 
+
+
+
+
+
+
+
+
+\section{Clause Intent Classification}
+\label{task_2.3}
+
+This task aims to automatically categorize individual clauses extracted from a legal contract into their primary functional intent. This forms a crucial step in intelligent contract analysis, enabling downstream applications such as obligation tracking, risk assessment, termination monitoring, and compliance automation.
+
+In this task, each clause from the Sponsorship Agreement (dated January 29, 2007, between iPayment, Inc., First Data Merchant Services Corporation, and Wells Fargo Bank, N.A.) was classified into one of seven specific categories: \textbf{Obligation}, \textbf{Prohibition}, \textbf{Condition}, \textbf{Permission}, \textbf{Representation/Warranty}, \textbf{Definition}, or \textbf{Scope/Structure}
+
+\subsection*{Problem Statement}
+While earlier pipeline stages successfully isolate individual clauses and extract key entities (such as Parties, Dates, and Monetary values), raw text remains fundamentally unstructured. A deterministic, rule-based query engine -- as required in \result{Assignment~\ref{assignment_3}} -- cannot interpret raw strings to answer complex logical queries like ``When is Party B penalized?'' or ``What actions are prohibited?'' without understanding the underlying semantic function of the text.
+
+\medskip
+
+Therefore, the challenge is to build a classification module that acts as a critical bridge between syntactic text extraction and intelligent retrieval. The system must not only accurately classify complex, multi-layered sentences but also resolve \emph{intent hijacking} -- where secondary conditions or permissions within a clause obscure the primary operational verb. Furthermore, to satisfy Explainable AI (XAI) requirements, the implementation must trace every classification back to a specific triggered rule, ensuring the downstream query engine is both deterministic and fully grounded in explainable logic.
+
+\subsection{Intent Schema Definition}
+To effectively transition from raw syntactic extraction to semantic analysis, the classification engine requires a high-resolution schema. Generic categorization is insufficient for a legal contract, where the operational reality of an ``Agent'' and ``Predicate'' drastically changes depending on whether an action is mandatory, forbidden, or optional. To meet the requirements of the downstream Rule-Based Query System (\result{Assignment~\ref{assignment_3}}), we defined a rigid, seven-category intent schema tailored specifically to commercial contract structures:
+
+\begin{description}[leftmargin=2cm, style=nextline]
+  \item[Obligation:] Clauses that dictate a mandatory action or duty an entity must perform. These are typically anchored by imperative modal verbs such as \textit{shall}, \textit{must}, \textit{agrees to}, or \textit{will}. Identifying Obligations is critical for querying what actions a party is legally bound to execute.
+
+  \item[Prohibition:] Clauses that dictate negative constraints or forbidden actions. These are anchored by restrictive phrasing such as \textit{shall not}, \textit{may not}, or \textit{in no event shall}. Prohibitions must be strictly isolated from Obligations to prevent the query engine from accidentally retrieving a forbidden action as a required duty.
+
+  \item[Condition:] Clauses that establish logical prerequisites, situational triggers, or exceptions. Anchored by phrases like \textit{if}, \textit{provided that}, or \textit{in the event}, these clauses alert the downstream system that an associated Obligation or Permission is not absolute, but contingent on a specific state.
+
+  \item[Permission:] Clauses that grant discretionary rights, powers, or authorizations without enforcing a duty. These are identified by permissive language such as \textit{may}, \textit{entitled to}, or \textit{reserves the right}.
+
+  \item[Representation/Warranty:] Clauses that establish agreed-upon statements of fact, legal acknowledgments, or disclaimers between the parties (e.g., \textit{represents}, \textit{warrants}, \textit{acknowledges}).
+
+  \item[Definition:] Clauses strictly dedicated to terminological scoping. Anchored by phrases like \textit{shall mean}, \textit{referred to as}, or \textit{is defined as}, this category provides the grounded dictionary that the query engine uses to resolve specific domain terms (e.g., ``What defines the Merchant Portfolio?'').
+
+  \item[Scope/Structure:] A structural catch-all used to classify document organization, such as Exhibit headers, Section titles, and schedule declarations. Filtering these out ensures that boilerplate formatting does not pollute the operational logic of the query engine.
+\end{description}
+
+By mapping the raw text to this specific schema, the unstructured document is converted into a deterministic matrix. This allows the Rule-Based Query Engine to parse not just who is doing what, but the strict legal nature of that action.
+
+\subsection{Methodology: Hybrid Rule-Based Classification}
+To operationalize the intent schema described above, we developed a \textbf{hybrid rule-based classification engine} in Python. Rather than relying on probabilistic machine learning models -- which can introduce unpredictable hallucinations -- a deterministic approach was selected to ensure the downstream Rule-Based Query System (\result{Assignment~\ref{assignment_3}}) receives 100\% predictable and grounded data. The methodology relies on three core technical pillars:
+
+\subsubsection*{Linguistic Filters}
+The foundation of the classifier is a dictionary of highly specific Regular Expressions (Regex). Each intent category is mapped to a set of linguistic triggers commonly found in commercial contracts. For example, the \texttt{prohib\_keyword} rule scans for exact boundary matches such as \verb|\b(shall not|may not|must not)\b|, while the \texttt{cond\_keyword} rule targets \verb|\b(if|provided that|in the event)\b|. This allows the engine to robustly parse semantic intent without requiring complex syntactic dependency trees.
+
+\subsubsection*{Classification Hierarchy}
+Legal language is often layered, with modifiers capable of inverting meaning. To prevent misclassification, the engine enforces a strict evaluation hierarchy. Critically, \textbf{Prohibitions} are always evaluated before \textbf{Obligations}. For example, if a clause contains ``shall not," it is immediately and irrevocably classified as a Prohibition -- no other rule is permitted to override it, even if ``shall" (an Obligation trigger) is also present. This ensures that forbidden actions are not wrongly recorded as required duties.
+
+\subsubsection*{The ``Earliest Index'' Algorithm}
+Initial testing revealed a critical edge case known as ``intent hijacking": many complex clauses contain more than one operational verb. For example, a clause may dictate an obligation but conclude with a discretionary permission (e.g., ``ISO shall cease its use... as may be required''). If a standard rule loop were used, a Permission keyword (``may'') encountered later in the sentence could inadvertently overwrite the primary Obligation detected earlier.
+
+\medskip
+
+To solve this, we implemented an \textbf{Earliest Index} algorithm. Instead of merely returning the first rule to match in code order, the classifier evaluates \emph{all} rules, records the character index at which each match is found, and then assigns the final classification based on the keyword appearing \emph{earliest} in the clause:
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{python}
+best_match = ("Other", "no_match")
+earliest_index = float('inf')
+
+for pattern, intent, rule_name in rules:
+  match = re.search(pattern, text_lower)
+  if match:
+    # Update classification only if this keyword appears earlier in the sentence
+    if match.start() < earliest_index:
+      earliest_index = match.start()
+      best_match = (intent, rule_name)
+\end{minted}
+
+\begin{algorithm}[H]
+  \footnotesize
+  \caption{Clause Intent Classification via Earliest-Index Matching}
+  \begin{algorithmic}[1]
+    \Procedure{ClassifyClauses}{$C, \mathcal{R}$} \Comment{$C$: Input clauses, $\mathcal{R}$: Ordered rule tuples $\langle pattern, intent, trigger \rangle$}
+    \State $results \gets [\ ]$
+    \For{\textbf{each} $clause$ \textbf{in} $C$}
+    \If{\Call{IsStructuralScope}{$clause$}}
+    \State \Call{Append}{$results, \langle clause, \text{"Scope/Structure"}, \text{"struct\_keyword"} \rangle$}
+    \State \textbf{continue}
+    \EndIf
+
+    \State $best\_intent \gets \text{"Other"}$
+    \State $best\_trigger \gets \text{"no\_match"}$
+    \State $min\_index \gets \infty$
+
+    \For{\textbf{each} $\langle pattern, intent, trigger \rangle$ \textbf{in} $\mathcal{R}$}
+    \State $match\_index \gets$ \Call{FindFirstMatch}{$pattern, clause$}
+
+    \If{$match\_index \neq \textbf{null}$ \textbf{and} $match\_index < min\_index$}
+    \State $min\_index \gets match\_index$
+    \State $best\_intent \gets intent$
+    \State $best\_trigger \gets trigger$
+    \EndIf
+    \EndFor
+
+    \State \Call{Append}{$results, \langle clause, best\_intent, best\_trigger \rangle$}
+    \EndFor
+
+    \State \Return \Call{SerializeToJSON}{$results$}
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+Because the primary legal intent in a clause is almost universally established by its \emph{first} operational verb, this index-based matching ensures that trailing permissions or secondary conditions do not override the core classification. This simple and robust technique proved highly effective, stabilizing the classifier output and guaranteeing that the data piped into \result{Assignment~\ref{assignment_3}} is both deterministic and highly accurate.
+
+\subsection{Technical Evaluation}
+The hybrid classification engine successfully processed the raw clauses from the Sponsorship Agreement. By applying the \texttt{earliest\_index} algorithm and hierarchical linguistic filters, the system bypassed the ``intent hijacking'' problem and mapped every unstructured text string to a deterministic legal intent.
+
+\subsubsection*{Output Data Structure (JSON).}
+To serve as the foundational database for the downstream Rule-Based Query Engine (Task 3.2), the results were serialized into a structured \emph{JSON} format. Each parsed clause was mapped to an object containing four critical key-value pairs:
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{clause\_id}: The integer index maintaining document order.
+  \item \textbf{clause}: The raw text string.
+  \item \textbf{intent}: The resolved operational category (e.g., Obligation, Prohibition, Condition).
+  \item \textbf{trigger\_rule}: The specific Explainable AI (XAI) metadata indicating exactly which linguistic rule forced the classification.
+\end{itemize}
+
+The excerpt below demonstrates the precision of the output.
+\begin{minted}[fontsize=\scriptsize,breaklines]{json}
+[
+  {
+    "clause_id": 4,
+    "clause": "Under this Agreement, FDMS and Bank will collectively be referred to as \"SERVICERS.\"",
+    "intent": "Definition",
+    "trigger_rule": "def_keyword"
+  },
+  {
+    "clause_id": 18,
+    "clause": "ISO shall cease its use of any Application Materials that become unacceptable to SERVICERS within ninety (90) days of receipt of written notice...",
+    "intent": "Obligation",
+    "trigger_rule": "oblig_keyword"
+  },
+  {
+    "clause_id": 587,
+    "clause": "Except as expressly set forth herein, ISO shall not assign or otherwise transfer this Agreement or any of its rights hereunder...",
+    "intent": "Prohibition",
+    "trigger_rule": "prohib_keyword"
+  }
+]
+\end{minted}
+
+In Clause 4, the expanded regex successfully identifies a split \textbf{Definition}. In Clause 18, the primary \textbf{Obligation} (\emph{``shall cease''}) is correctly captured. Most importantly, in Clause 587, the strict hierarchy successfully catches the \textbf{Prohibition} (\emph{``shall not''}), ensuring it is not mistakenly processed as a standard obligation.
+
+This structured, grounded data ensures that the query engine in Task 3.2 can execute precise, deterministic filters -- such as isolating all prohibited actions assigned to the ``ISO'' entity -- while maintaining a clear, explainable logic trail for every result.
+
+\subsection{Challenges and Limitations}
+\subsubsection*{The ``Split Definition'' Edge Case}
+While the \texttt{earliest\_index} algorithm successfully resolved the ``intent hijacking'' problem for operational clauses, it inadvertently created a new edge case regarding \textbf{Definitions}. In legal drafting, definitions are frequently structured using split phrases containing operational verbs, such as ``FDMS and Bank will collectively be referred to as...'' or ``Minimum Balance shall have the meaning provided in...''. Because words like \emph{``will''} and \emph{``shall''} appeared physically earlier in the string than the definitional keywords (``referred to as'', ``meaning provided in''), the \texttt{earliest\_index} algorithm initially misclassified these definitional clauses as Obligations.
+\begin{minted}[fontsize=\footnotesize,breaklines]{json}
+{
+  "clause_id": 62,
+  "clause": "\"Minimum Balance\" shall have the meaning provided in Section 6.1(a).",
+  "intent": "Definition",
+  "trigger_rule": "def_keyword"
+}
+\end{minted}
+
+Initially, the \texttt{earliest\_index} algorithm classified Clause 62 as an Obligation because it encountered the word 'shall' at index 18, well before it reached the definitional phrase 'meaning provided in' at index 33. This necessitated an update to the regex engine to treat shall.*?meaning provided in as a single, combined definition trigger to successfully override the generic obligation rule.
+
+\medskip
+
+To resolve this, the regular expression for the \texttt{def\_keyword} rule had to be expanded to capture the entire split phrase (e.g., \texttt{will.*?be referred to as}). This allowed the engine to recognize the full definitional structure at the index of the first operational verb, successfully overriding the generic Obligation rule.
+
+\subsubsection*{Limitations of a Pure Rule-Based Approach}
+The primary limitation of this implementation is the inherent rigidity of rule-based linguistic filtering. Unlike the Transformer-based approach used in \result{Section~\ref{task_2.1}} (NER), a regular expression engine lacks deep semantic understanding. It relies entirely on the presence of exact string matches.
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{json}
+  {
+    "clause_id": 579,
+    "clause": "ISO is not authorized hereunder to hold itself out as an agent of SERVICERS or to inform or represent...",
+    "intent": "Other",
+    "trigger_rule": "no_match"
+  }
+\end{minted}
+
+Clause 579 exposes the core trade-off inherent in dictionary-based, rule-driven intent classification. In this example, the phrase \emph{``is not authorized''} semantically marks a clear \textbf{Prohibition} -- ISO is strictly forbidden to represent itself as a SERVICERS agent. However, the implemented \texttt{prohib\_keyword} rule only detects canonical boilerplate patterns such as ``shall not,'' ``may not,'' or ``is prohibited from.'' Because ``is not authorized'' was not present in the rule dictionary, the clause defaulted to the ``Other'' class, despite its clear legal meaning.
+
+Legal language is notoriously variable and context-dependent; relying on a fixed set of surface patterns leaves the system vulnerable to missed or misclassified intents when new linguistic forms arise. In practice, contract drafters may employ diverse phrasings (e.g., ``is not empowered to'', ``does not have the right to'', ``is precluded from'') to express prohibitions, permissions, or obligations. Without manual expansion to cover these variants, the system's recall for non-boilerplate patterns will remain limited.
+
+\medskip
+
+Consequently, if a novel contract utilizes highly unusual phrasing to dictate an obligation (e.g., ``ISO assumes the burden of\ldots''), and that specific phrase is absent from the rule dictionary, the engine will fail to classify it and default to the ``Other'' category.
+
+\subsubsection*{Justification for the Trade-off}
+Despite its brittleness compared to probabilistic machine learning models, the deterministic rule-based approach was intentionally selected to satisfy the strict requirements of \result{Assignment~\ref{assignment_3}}. This choice A Rule-Based Query System requires 100\% predictable, explainable data. By accepting the limitation of a rigid dictionary, the system entirely eliminates the risk of ``semantic hallucinations'' (where a model might incorrectly guess the intent of a clause). Furthermore, the deterministic nature of this implementation ensures that every classification is accompanied by a transparent \texttt{trigger\_rule}, fully satisfying the Explainable AI (XAI) mandate of the final deliverable.
+
+\newpage\part{Contract Question Answering Chatbot}
+\label{assignment_3}
 % \bibliographystyle{plainnat}
 % \bibliography{references}
 \end{document}

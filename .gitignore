@@ -35,7 +35,7 @@
 *.dvi
 *.ps
 Specification.pdf
-
+_minted/
 # TeXworks temp files
 *~
 # Mac OS X
@@ -49,9 +49,8 @@ Specification.pdf
 .vscode/
 
 # Temporary folders
-*_minted*
 /auto/
 latex.out/
 
 output/
-_minted/
+ner_model/
