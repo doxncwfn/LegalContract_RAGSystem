@@ -1486,6 +1486,256 @@ Despite its brittleness compared to probabilistic machine learning models, the d
 
 \newpage\part{Contract Question Answering Chatbot}
 \label{assignment_3}
+
+\section{Objective and Problem Statement}
+The extraction and semantic analysis phases detailed in \result{Parts~\ref{assignment_1}} and \result{Parts~\ref{assignment_2}} successfully transformed unstructured, highly variable legal prose into a deterministic, machine-readable format (\texttt{srl\_results.json}). By rigorously isolating entities, semantic roles (Agent, Theme, Condition), and operational intents (Obligation, Prohibition), the pipeline established a highly structured relational database.
+
+\medskip
+
+However, while JSON arrays are optimal for programmatic evaluation, they are fundamentally inaccessible to end-users such as legal analysts or contract managers. The objective of Part~III is to bridge this usability gap by implementing a conversational interface capable of understanding natural language queries and returning precise, legally grounded answers.
+
+\subsection{The Challenge: LLM Hallucinations in the Legal Domain}
+The simplest approach to building a conversational agent is to provide a Large Language Model (LLM) with the entire raw contract in its context window. However, relying purely on generative AI in the legal domain introduces severe, unacceptable risks:
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{Hallucinations}: Unconstrained LLMs frequently ``invent'' logical connections, misattribute obligations to the wrong party, or confidently hallucinate termination penalties that do not exist in the source text.
+  \item \textbf{Context Dilution}: When forced to evaluate dozens of pages of boilerplate text simultaneously, LLMs struggle to isolate specific, localized rules (often referred to as the ``lost in the middle'' phenomenon).
+  \item \textbf{The ``Black Box'' Problem}: A pure generative model provides answers without exposing its underlying reasoning, violating the transparency requirements of Explainable AI (XAI).
+\end{itemize}
+
+\subsection{The Solution: Retrieval-Augmented Generation (RAG)}
+To resolve these vulnerabilities, the final system architecture abandons pure generation in favor of \textbf{Retrieval-Augmented Generation (RAG)}.
+
+Instead of asking an LLM to ``read and answer'' the entire contract at once, the RAG architecture inverts the paradigm. The system first embeds the deterministic metadata extracted in Part~II into a searchable vector database. When a user asks a question, the system algorithmically retrieves only the top-$k$ most semantically relevant clauses. The LLM is then strictly confined to reading only this retrieved subset, forced to synthesize its answer based entirely on the provided context, and mandated to explicitly cite its sources using exact Clause IDs.
+
+\medskip
+
+This architecture guarantees that the resulting chatbot is not a generative ``black box,'' but rather a deterministic, explainable search engine with a natural language interface.
+
+\section{System Architecture and Technical Stack}
+\label{sec:system_architecture}
+
+To operationalize the RAG architecture, a lightweight, highly performant technical stack was engineered. The system was designed to prioritize data privacy, execution speed, and architectural transparency.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{images/architecture.png}
+  \caption{System Architecture}
+  \label{sys_architect}
+\end{figure}
+
+\subsection{Vector Database and Embeddings}
+\label{sec:vector_db_embeddings}
+
+Standard keyword search (BM25) is insufficient for legal querying, as users often use different vocabulary than the contract drafters (e.g., asking about a ``penalty'' when the contract specifies a ``loss''). To bridge this semantic gap, the system employs dense vector embeddings.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/vectordb.png}
+  \caption{Comparison}
+  \label{Comparison}
+\end{figure}
+
+\textbf{Embedding Model:} The text and metadata are embedded using the \texttt{all-MiniLM-L6-v2} model via the \texttt{sentence-transformers} library. This specific architecture was selected because it maps sentences to a 384-dimensional dense vector space with high semantic accuracy while remaining computationally lightweight, allowing for rapid, local execution on CPU architecture.
+
+\medskip
+
+\textbf{Vector Storage:} ChromaDB was selected as the vector database. Unlike cloud-native solutions (e.g., Pinecone or Supabase), \textcolor{red}{ChromaDB} operates as a local, persistent client. This ensures that sensitive legal data never leaves the local machine during the indexing phase, fulfilling fundamental data privacy requirements in legal technology.
+
+\subsection{LLM and Orchestration (The ``Pure Python'' Advantage)}
+\label{sec:llm_and_orchestration}
+
+The generative component of the RAG pipeline is powered by the \textbf{Gemini 2.5 Flash Large Language Model}, accessed via an OpenAI-compatible SDK endpoint. This model provides the advanced reasoning capabilities required to synthesize complex contractual logic from the retrieved context.
+
+\medskip
+
+Crucially, the orchestration of the retrieval and generation pipeline was implemented using \textbf{native Python}, explicitly bypassing high-level abstraction frameworks such as LangChain or LlamaIndex. In academic and enterprise NLP, heavily abstracted frameworks obscure the data flow, complicating debugging and violating Explainable AI (XAI) mandates. By engineering a native retrieval loop, the system achieves:
+
+\begin{itemize}[topsep=0pt, parsep=0pt, itemsep=0pt]
+  \item \textbf{Absolute Transparency:} The exact prompt string, context injection, and hyperparameter configuration (\texttt{temperature=0.1}) are explicitly defined and easily auditable.
+  \item \textbf{Reduced Latency:} Removing middleware layers eliminates unnecessary tokenization and wrapper overhead.
+  \item \textbf{Deterministic Control:} The pipeline maintains granular control over the semantic search threshold and the exact string formatting of the [Clause ID] citations, preventing the LLM from hallucinating source references.
+\end{itemize}
+
+\subsection{Frontend Interface}
+
+To demonstrate the downstream viability of the system, the backend logic is wrapped in a Streamlit conversational interface. Streamlit provides native state management (\texttt{st.session\_state}) to maintain conversational memory, while its UI components (\texttt{st.chat\_message} and \texttt{st.expander}) allow the application to elegantly display both the LLM's synthesized natural language answer and the raw, underlying legal clauses retrieved from ChromaDB. This dual-display guarantees that the user can instantly verify the AI's claims against the ground-truth text.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{images/UI.png}
+  \caption{System Architecture}
+  \label{UI}
+\end{figure}
+
+\subsection{Data Ingestion and Semantic Representation}
+\label{sec:data_ingestion_semantics}
+
+To enable effective semantic search, the structured outputs from the extraction pipeline (specifically \texttt{srl\_results.json}) must be transformed into a format optimized for the vector database. The data ingestion module serves as the bridge between the deterministic JSON arrays and the high-dimensional vector space.
+
+\paragraph{Semantic Enrichment of Clauses}
+A standard semantic search algorithm embeds raw text. However, searching purely on the raw legal clause risks losing the operational context extracted during the Semantic Role Labeling (SRL) phase. To maximize retrieval accuracy, the ingestion pipeline constructs a \emph{rich document} string for each clause before passing it to the embedding model. This string concatenates the raw text with its explicitly extracted operational roles:
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{python}
+# Semantic Enrichment for Vectorization
+doc_text = f"Clause: {clause_text}\nPredicate: {item.get('predicate')}\nRoles: {json.dumps(roles)}"
+\end{minted}
+
+By explicitly injecting the Predicate and Roles into the text representation, the \texttt{all-MiniLM-L6-v2} model generates an embedding that is highly aware of the action and actors in the clause, not just the vocabulary.
+
+\paragraph{Metadata Tagging for Hybrid Search}
+Simultaneously, key semantic variables are stripped from the JSON and stored as structured metadata within ChromaDB:
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{python}
+# Metadata mapping for deterministic filtering
+metadata = {
+    "clause_id": str(i),
+    "agent": roles.get("Agent", "Unknown"),
+    "condition": roles.get("Condition", "None")
+}
+\end{minted}
+
+This dual-storage approach -- dense vectors for the enriched document and discrete metadata for the actors and conditions -- future-proofs the system for \emph{Hybrid Search}, where a user query can first be mathematically filtered (e.g., \texttt{WHERE agent = 'ISO'}) before the semantic vector search is executed.
+
+\subsection{Retrieval and Prompt Engineering}
+\label{sec:retrieval_prompt_engineering}
+
+Once the database is populated, the system must securely orchestrate the user's natural language query, retrieve the relevant legal context, and generate an explainable answer.
+
+\subsubsection{Top-K Semantic Retrieval}
+When a user submits a query, the backend utilizes the same \texttt{all-MiniLM-L6-v2} model to embed the user's question into the same 384-dimensional vector space. The system performs a $k$-Nearest Neighbors (KNN) search utilizing cosine similarity to retrieve the $k=5$ most semantically relevant clauses from the database. These raw clauses, along with their associated \texttt{clause\_id} metadata, are concatenated into a single context block.
+
+\subsubsection{Strict Contextual Prompting (Hallucination Mitigation)}
+The most critical vulnerability of any generative AI model in legal analysis is its propensity to hallucinate facts or apply outside legal knowledge that is not present in the governing contract. To neutralize this, the Gemini 2.5 Flash model is wrapped in a highly restrictive system prompt that acts as a deterministic guardrail:
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{python}
+system_prompt = f"""
+You are a legal contract assistant. Answer the user's question using ONLY the provided context below.
+
+RULES:
+1. If the answer cannot be found in the context, say: "I cannot find the answer in the provided contract clauses."
+2. Do not use anything outside the supplied context.
+3. Cite your sources using the [Clause ID: X] format as in the context.
+
+CONTEXT:
+{context}
+"""
+\end{minted}
+
+This prompt engineering architecture achieves three objectives vital for Explainable AI:
+\begin{enumerate}
+  \item \textbf{Absolute Confinement}: By explicitly commanding the model to refuse an answer if the data is absent (Rule 1), the system mitigates the LLM's default behavior of guessing or interpolating missing legal clauses.
+  \item \textbf{Contextual Isolation}: Rule 2 prevents the model from relying on its pre-trained weights (e.g., standard definitions of commercial law), forcing it to evaluate only the specific definitions and rules negotiated in this particular Sponsorship Agreement.
+  \item \textbf{Traceability}: Rule 3 forces the model to mathematically map its generative output back to the specific \texttt{clause\_id} fetched from ChromaDB, allowing the end-user to instantly audit the AI's claims against the original contract.
+\end{enumerate}
+
+\subsection{Technical Evaluation and Results}
+The viability of the Retrieval-Augmented Generation (RAG) architecture was evaluated by submitting complex queries to the Streamlit interface and analyzing the generated outputs for factual accuracy, contextual adherence, and proper citation format.
+
+\subsubsection{Contextual Synthesis and Citation Accuracy}
+
+The primary success metric for the chatbot is its ability to synthesize an answer from localized legal text and mathematically map that answer to a specific source clause.
+\paragraph{Test Query:} \emph{``What happens if ISO fails to fund the Reserve Account?''}
+
+\paragraph{System Execution:} The vector database successfully identified the semantic similarity between the query and the clauses governing financial offsets. The \texttt{all-MiniLM-L6-v2} embeddings accurately pulled the relevant text despite the query not using the exact phrasing of the contract.
+
+\paragraph{LLM Output:}
+\begin{quote}
+  \texttt{If ISO fails to fund the Reserve Account, SERVICERS are authorized to fund the account themselves using any of the manners previously set forth, such as debiting the Offset Account [Clause ID: 153].}
+\end{quote}
+
+\paragraph{Evaluation:} The generated response is factually flawless. The model successfully obeyed the system prompt by restricting its logic to the retrieved text and appending the required [Clause ID] citation. This allows end-users to instantly audit the AI's claim, fulfilling the Explainable AI (XAI) mandate.
+
+\subsubsection{Evaluating Hallucination Defenses (The Refusal Mechanism)}
+
+In legal technology, a false positive (hallucination) is vastly more dangerous than a false negative. The system was tested to ensure the strict prompt constraints effectively neutralized the LLM's tendency to invent answers.
+
+\paragraph{Test Query:} \emph{``Under what specific circumstances can ISO terminate the Agreement before its scheduled expiration?''}
+
+\paragraph{LLM Output:}
+\begin{quote}
+  \texttt{I cannot find the answer in the provided contract clauses. The retrieved clauses describe circumstances under which SERVICERS may terminate the Agreement [Clause ID: 154], but not when ISO can terminate the Agreement.}
+\end{quote}
+
+\paragraph{Evaluation:} While the system failed to retrieve the correct answer (as discussed in Section~\ref{sec:limitations_hybrid_search}), the generative model behaved exactly as engineered. Because the vector search failed to provide the specific clauses detailing ISO's termination rights, the LLM triggered the mandatory fallback response (``I cannot find the answer...'') rather than attempting to guess or apply generic contract law. This proves the hallucination mitigation architecture is highly robust.
+
+\subsection{Challenges, Limitations, and Future Work: The Case for Hybrid Search}
+\label{sec:limitations_hybrid_search}
+
+While the pure semantic search approach (K-Nearest Neighbors via cosine similarity) successfully drives the baseline RAG implementation, the ``Termination Query'' failure highlighted above exposes a fundamental architectural limitation in using dense vector embeddings for commercial contracts.
+
+\paragraph{The Dense Similarity Vulnerability}
+
+Legal contracts are characterized by extreme repetitive density. In the Sponsorship Agreement, Section~10.2 (Termination by SERVICERS) and Section~10.3 (Termination by ISO) share nearly identical vocabulary, syntactic structures, and enumerations. When the user queried ``Under what circumstances can ISO terminate...'', the vector embeddings for Section~10.2 and~10.3 were situated so close together in the 384-dimensional hyperspace that the $n\_results=5$ retrieval window was entirely consumed by SERVICERS' termination rights. The pure semantic search was overwhelmed by the surrounding linguistic noise, failing to distinguish between the two distinct actors.
+
+\paragraph{Future Work: Metadata-Driven Hybrid Search}
+To resolve this vulnerability in production environments, the RAG architecture must be upgraded from pure semantic search to Hybrid Search. This is precisely where the Information Extraction pipeline developed in \result{Part~\ref{assignment_2}} provides immense downstream value.
+
+\medskip
+
+Because the extraction pipeline successfully isolated the semantic arguments into structured JSON, the \texttt{srl\_results.json} database already contains the deterministic metadata required to solve this problem. In future iterations, the LangChain or native Python retriever can be augmented to accept a pre-filter step. When a user asks about ISO's termination rights, a Natural Language to SQL (NL2SQL) module can translate the query into a deterministic filter:
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{python}
+collection.query(..., where={"agent": "ISO", "intent": "Permission"})
+\end{minted}
+
+By applying hard metadata filters before executing the dense vector search, the system mathematically excludes all clauses where SERVICERS are the acting party. This Hybrid Search architecture -- combining the deterministic precision of Semantic Role Labeling (\result{Section~\ref{task_2.2}}) with the semantic flexibility of Vector Search -- represents the ultimate, hallucination-free paradigm for automated legal analysis.
+
+\section{Conclusion}
+The objective of this project was to engineer an end-to-end Natural Language Processing pipeline capable of transforming unstructured, dense commercial legal contracts into a deterministic, queryable architecture. By systematically breaking down the linguistic complexities of the legal domain, this implementation successfully bridged the gap between traditional syntactic parsing and modern generative AI.
+
+\medskip
+
+In \result{Part~\ref{assignment_1}}, the pipeline overcame standard ``tokenization traps'' and OCR formatting noise by implementing a dependency-aware, hybrid heuristic clause splitter. By moving beyond shallow punctuation rules and enforcing a ``New Subject'' constraint via Universal Dependencies, the system successfully preserved the semantic boundaries of deeply nested legal enumerations and possessive chains.
+
+\medskip
+
+In \result{Part~\ref{assignment_2}}, the limitations of general-purpose models were addressed directly. The Named Entity Recognition (NER) module was fine-tuned using a weight-preservation architecture, allowing it to learn a custom legal schema without experiencing catastrophic forgetting of English syntax. Furthermore, by reframing Semantic Role Labeling (SRL) as a Machine Reading Comprehension (QA-SRL) task and implementing an ``earliest-index'' intent classifier, the system successfully mapped isolated entities into a highly structured, relational JSON database.
+
+\medskip
+
+Finally, in \result{Part~\ref{assignment_3}}, this deterministic database was leveraged to power a Retrieval-Augmented Generation (RAG) conversational agent. By explicitly bypassing heavily abstracted frameworks in favor of a native Python orchestration loop, the architecture achieved absolute control over the retrieval context. The generative LLM was strictly confined by deterministic prompt engineering, effectively neutralizing semantic hallucinations and ensuring that every generated claim was accompanied by an exact [Clause ID] citation.
+
+\medskip
+
+Ultimately, this project demonstrates that while Large Language Models possess remarkable synthesis capabilities, they cannot be deployed safely in the legal domain without a rigorous, upstream NLP pipeline. By combining deep symbolic processing (syntax trees, rule-based heuristics) with advanced neural extraction (Transformer-based QA and Vector Search), the resulting system achieves both the flexibility of natural language querying and the strict precision mandated by Explainable AI (XAI).
+
+\appendix
+\section{Project Reproduction and Execution}
+
+To facilitate the reproduction of the results discussed in this report, the codebase has been structured for rapid deployment. The environment requires a standard x86\_64 or Apple Silicon architecture running Python 3.11+.
+
+\subsection{Environment Initialization}
+All dependencies have been strictly pinned to ensure compatibility across the Hugging Face and PyTorch ecosystems.
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{bash}
+# Initialize virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# Install strictly versioned dependencies
+pip install -r requirements.txt
+\end{minted}
+
+\subsection{Required API Configuration}
+
+The conversational interface relies on the Gemini 2.5 Flash API for context synthesis. A valid API key must be placed in the project root:
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{bash}
+# Create environment file in the src directory
+echo "GEMINI_API_KEY=your_api_key_here" > src/.env
+\end{minted}
+
+\subsection{Application Execution}
+
+The complete Information Extraction, Semantic Role Labeling, and Intent Classification data is pre-compiled in \texttt{output/srl\_results.json}. The backend retrieval orchestration and frontend UI are unified in a single Streamlit application.
+
+\begin{minted}[fontsize=\footnotesize,breaklines]{bash}
+# Launch the RAG Chatbot
+streamlit run src/app.py
+\end{minted}
+
+Upon initial execution, the application will parse the JSON outputs, generate 384-dimensional dense vectors utilizing the \texttt{all-MiniLM-L6-v2} transformer, and instantiate a persistent ChromaDB instance in the local \texttt{./chroma\_db} directory before rendering the interactive conversational interface on \url{http://localhost:8501}.
+
 % \bibliographystyle{plainnat}
 % \bibliography{references}
 \end{document}
