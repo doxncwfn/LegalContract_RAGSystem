@@ -54,3 +54,6 @@ latex.out/
 
 output/
 _minted/
+ner_model/
+.venv/
+__pycache__/
