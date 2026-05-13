@@ -55,5 +55,7 @@ latex.out/
 output/
 _minted/
 ner_model/
+chroma_db/
 .venv/
+.env
 __pycache__/

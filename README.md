@@ -4,6 +4,7 @@ This repository implements the assignment flow from `docs/Specification.pdf`:
 
 - **Assignment 1:** clause splitting, noun phrase chunking (IOB), dependency analysis
 - **Assignment 2:** custom legal NER, semantic role labeling (SRL), clause intent classification
+- **Assignment 3 (optional):** RAG chatbot (`src/app.py`) with ChromaDB + sentence-transformers + OpenAI
 
 The source code lives in `src/`.
 
@@ -57,8 +58,9 @@ Optional (skip SRL to run faster and avoid transformer download):
 
 ```bash
 python src/run_full_pipeline.py --input SPONSORSHIP_AGREEMENT.txt --skip-srl
-Force retrain NER even if a model already exists:
 ```
+
+Force retrain NER even if a model already exists:
 
 ```bash
 python src/run_full_pipeline.py --input SPONSORSHIP_AGREEMENT.txt --force-train-ner
@@ -97,9 +99,33 @@ python srl.py
 - `src/train_ner.py`: spaCy fine-tuning script for legal NER
 - `src/predict_ner.py`: NER inference over clause file
 - `src/srl.py`: QA-based SRL over NER output
+- `src/app.py`: Assignment 3 RAG chatbot (Streamlit + Chroma + OpenAI)
 
-## 6) Reproducibility Notes
+## 6) Assignment 3 — RAG chatbot (Streamlit)
+
+Use the **project virtual environment** (not the global `pyenv` Python). A global install often pulls `transformers` 5.x, which expects **PyTorch ≥ 2.4** and breaks this repo’s pinned stack (`torch==2.2.2` + `transformers==4.41.2`).
+
+1. Build `src/output/srl_results.json` (run the full pipeline at least once; see section 3).
+
+2. Put your API key in `src/.env`:
+
+   ```bash
+   echo 'OPENAI_API_KEY=sk-...' > src/.env
+   ```
+
+3. From the **repository root**, with `.venv` activated:
+
+   ```bash
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   streamlit run src/app.py
+   ```
+
+The app reads `src/output/srl_results.json` and stores the vector DB under `src/chroma_db/`.
+
+## 7) Reproducibility Notes
 
 - Scripts use UTF-8 input/output.
 - Paths are relative to `src/` data layout expected by the assignment.
 - Existing generated artifacts in `src/output/` can be overwritten by reruns.
+- If you see `Disabling PyTorch because PyTorch >= 2.4 is required`, you are not using the pinned `.venv` dependencies — reinstall with `pip install -r requirements.txt` inside `.venv`.
